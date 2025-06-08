@@ -1,0 +1,29 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 4,
+    "villager_profession": "minecraft:mason",
+    "villager_type": "minecraft:plains"
+  },
+  "first_buy": {
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 16,
+  "merchant_experience": 30,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "count": 12,
+      "id": "minecraft:lime_glazed_terracotta"
+    },
+    {
+      "count": 12,
+      "id": "minecraft:green_glazed_terracotta"
+    },
+    {
+      "count": 12,
+      "id": "minecraft:pink_glazed_terracotta"
+    }
+  ]
+}

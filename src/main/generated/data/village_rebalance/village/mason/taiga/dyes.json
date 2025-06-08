@@ -1,0 +1,33 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 3,
+    "villager_profession": "minecraft:mason",
+    "villager_type": "minecraft:taiga"
+  },
+  "first_buy": [
+    {
+      "count": 12,
+      "id": "minecraft:black_dye"
+    },
+    {
+      "count": 12,
+      "id": "minecraft:brown_dye"
+    },
+    {
+      "count": 12,
+      "id": "minecraft:light_blue_dye"
+    },
+    {
+      "count": 12,
+      "id": "minecraft:purple_dye"
+    }
+  ],
+  "max_uses": 16,
+  "merchant_experience": 20,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "id": "minecraft:emerald"
+  }
+}
