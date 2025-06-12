@@ -2,13 +2,13 @@
   "condition": {
     "condition_type": "village_rebalance:villager_data",
     "villager_level": 1,
-    "villager_profession": "minecraft:mason"
+    "villager_profession": "minecraft:farmer"
   },
   "first_buy": {
-    "count": 12,
-    "id": "minecraft:quartz"
+    "count": 15,
+    "id": "minecraft:beetroot"
   },
-  "max_uses": 16,
+  "max_uses": 12,
   "merchant_experience": 2,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,
