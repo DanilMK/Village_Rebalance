@@ -24,7 +24,6 @@ import net.minecraft.registry.tag.TagKey;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.world.gen.structure.Structure;
@@ -34,7 +33,6 @@ import net.smok.villagerebalance.trade.EnchantData;
 import net.smok.villagerebalance.utility.*;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -188,7 +186,7 @@ public final class ItemFunctions {
         return of(POTION, new RegisteredField<>(Registries.POTION, potion));
     }
 
-    protected static Optional<Integer> getColor(ItemStack itemStack1) {
+    private static Optional<Integer> getColor(ItemStack itemStack1) {
         NbtCompound display = itemStack1.getOrCreateSubNbt("display");
         if (display.contains("color", NbtElement.INT_TYPE)) {
             return Optional.of(display.getInt("color"));

@@ -38,7 +38,7 @@ public record ItemFunction<T extends JsonConvertible<T>> (T defaultField, TriCon
     }
 
 
-    public static record Data<T extends JsonConvertible<T>> (@NotNull ItemFunction<T> function, @NotNull T data) implements JsonMaker {
+    public record Data<T extends JsonConvertible<T>> (@NotNull ItemFunction<T> function, @NotNull T data) implements JsonMaker {
 
         public void accept(ItemStack itemStack, MerchantEntity entity) {
             function.accept(itemStack, entity, data);
