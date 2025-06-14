@@ -1,0 +1,19 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 4,
+    "villager_profession": "minecraft:cleric"
+  },
+  "first_buy": {
+    "count": 9,
+    "id": "minecraft:glass_bottle"
+  },
+  "max_uses": 1,
+  "merchant_experience": 30,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "count": 12,
+    "id": "minecraft:emerald"
+  }
+}

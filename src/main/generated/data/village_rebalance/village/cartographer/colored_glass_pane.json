@@ -1,0 +1,65 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 2,
+    "villager_profession": "minecraft:cartographer"
+  },
+  "first_buy": [
+    {
+      "id": "minecraft:white_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:light_gray_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:gray_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:black_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:brown_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:red_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:orange_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:yellow_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:lime_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:green_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:cyan_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:light_blue_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:blue_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:purple_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:magenta_stained_glass_pane"
+    },
+    {
+      "id": "minecraft:pink_stained_glass_pane"
+    }
+  ],
+  "max_uses": 1,
+  "merchant_experience": 10,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "count": 12,
+    "id": "minecraft:emerald"
+  }
+}

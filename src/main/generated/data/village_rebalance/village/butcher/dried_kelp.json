@@ -1,0 +1,19 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 4,
+    "villager_profession": "minecraft:butcher"
+  },
+  "first_buy": {
+    "count": 10,
+    "id": "minecraft:dried_kelp_block"
+  },
+  "max_uses": 1,
+  "merchant_experience": 30,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "count": 16,
+    "id": "minecraft:emerald"
+  }
+}

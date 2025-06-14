@@ -1,0 +1,18 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 1,
+    "villager_profession": "minecraft:fisherman"
+  },
+  "first_buy": {
+    "count": 12,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 3,
+  "merchant_experience": 2,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "id": "minecraft:cod_bucket"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 5,
+    "villager_profession": "minecraft:butcher"
+  },
+  "first_buy": {
+    "count": 12,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 3,
+  "merchant_experience": 40,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "functions": [
+        {
+          "function_type": "village_rebalance:potion",
+          "value": "net.minecraft.potion.Potion@5fde3b6d"
+        }
+      ],
+      "item": {
+        "id": "minecraft:potion"
+      }
+    },
+    {
+      "functions": [
+        {
+          "function_type": "village_rebalance:potion",
+          "value": "net.minecraft.potion.Potion@abd1327"
+        }
+      ],
+      "item": {
+        "id": "minecraft:potion"
+      }
+    }
+  ]
+}

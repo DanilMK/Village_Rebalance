@@ -1,0 +1,50 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 1,
+    "villager_profession": "minecraft:butcher"
+  },
+  "first_buy": [
+    {
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:cooked_chicken",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 14,
+        "id": "minecraft:chicken"
+      }
+    },
+    {
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:cooked_porkchop",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 7,
+        "id": "minecraft:porkchop"
+      }
+    },
+    {
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:cooked_rabbit",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 4,
+        "id": "minecraft:rabbit"
+      }
+    }
+  ],
+  "max_uses": 1,
+  "merchant_experience": 2,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "count": 16,
+    "id": "minecraft:emerald"
+  }
+}

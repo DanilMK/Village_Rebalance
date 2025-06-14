@@ -1,0 +1,19 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 3,
+    "villager_profession": "minecraft:cleric"
+  },
+  "first_buy": {
+    "count": 2,
+    "id": "minecraft:rabbit_foot"
+  },
+  "max_uses": 1,
+  "merchant_experience": 20,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "count": 12,
+    "id": "minecraft:emerald"
+  }
+}

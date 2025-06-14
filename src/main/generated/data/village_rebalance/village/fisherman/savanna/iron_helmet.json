@@ -1,0 +1,44 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:and",
+    "conditions": [
+      {
+        "condition_type": "village_rebalance:villager_data",
+        "villager_level": 2,
+        "villager_profession": "minecraft:fisherman",
+        "villager_type": "minecraft:savanna"
+      },
+      {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:iron_helmet",
+        "search_type": "sell"
+      }
+    ]
+  },
+  "first_buy": {
+    "count": 6,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 12,
+  "merchant_experience": 10,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "functions": [
+      {
+        "enchantments": [
+          "minecraft:fire_protection",
+          "minecraft:respiration",
+          "minecraft:aqua_affinity"
+        ],
+        "fixed_level": 0,
+        "function_type": "village_rebalance:enchantment",
+        "use_same_enchantment": true,
+        "use_villager_level": true
+      }
+    ],
+    "item": {
+      "id": "minecraft:iron_helmet"
+    }
+  }
+}
