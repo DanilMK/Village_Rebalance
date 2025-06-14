@@ -6,7 +6,6 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.MerchantEntity;
-import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.EnchantedBookItem;
 import net.minecraft.item.FilledMapItem;
 import net.minecraft.item.ItemStack;
@@ -32,8 +31,8 @@ import net.smok.villagerebalance.Values;
 import net.smok.villagerebalance.trade.EnchantData;
 import net.smok.villagerebalance.utility.*;
 import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -58,10 +57,10 @@ public final class ItemFunctions {
 
 
     public static final ItemFunction<EnchantData> ENCHANT = register("enchantment", new ItemFunction<>(
-            new EnchantData(Enchantments.UNBREAKING, 1, 1, false, false),
+            new EnchantData(false, false, 0, List.of(Enchantments.UNBREAKING)),
             (itemStack, entity, enchantData) -> {
-                Enchantment enchantment = enchantData.useSameEnchant() ? foreachOffer(entity, ItemFunctions::getEnchant).orElse(enchantData.enchantment()) : enchantData.enchantment();
-                int level = enchantData.useVillagerLevel() && entity instanceof VillagerEntity villager ? villager.getVillagerData().getLevel() : enchantData.minLevel(); //todo add level
+                Enchantment enchantment = enchantData.useSameEnchant() ? foreachOffer(entity, enchantData::getSame).orElse(enchantData.getRandom(entity.getRandom())) : enchantData.getRandom(entity.getRandom());
+                int level = enchantData.getLevel(enchantment, entity);
 
                 if (itemStack.getItem() instanceof EnchantedBookItem) {
                     NbtCompound nbt = itemStack.getOrCreateNbt();
@@ -129,36 +128,21 @@ public final class ItemFunctions {
         return Optional.empty();
     }
 
-    private static Optional<Enchantment> getEnchant(@NotNull ItemStack itemStack) {
-        NbtCompound nbt = itemStack.getNbt();
-        if (nbt != null) {
-            NbtList storedEnchantments = itemStack.getItem() instanceof EnchantedBookItem ?
-                    nbt.getList("StoredEnchantments", NbtElement.COMPOUND_TYPE) :
-                    nbt.getList("Enchantments", NbtElement.COMPOUND_TYPE);
 
-            if (storedEnchantments != null) for (int i = 0; i < storedEnchantments.size(); i++) {
-
-                NbtCompound enchantCompound = storedEnchantments.getCompound(i);
-                if (enchantCompound != null && enchantCompound.getString("id") != null) {
-                    Enchantment enchantment = Registries.ENCHANTMENT.get(new Identifier(enchantCompound.getString("id")));
-                    if (enchantment != null && enchantment.getMaxLevel() > 1) return Optional.of(enchantment);
-                }
-            }
-        }
-        return Optional.empty();
+    public static ItemFunction.Data<EnchantData> ofProgression(Enchantment... enchantments) {
+        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(true, true, 0, enchantments));
     }
 
-
-    public static ItemFunction.Data<EnchantData> ofSingle(Enchantment enchantment) {
-        return of(ENCHANT, new EnchantData(enchantment, 1, 1,true,false));
+    public static ItemFunction.Data<EnchantData> ofSingle(Enchantment... enchantments) {
+        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(false, false, 0, enchantments));
     }
 
-    public static ItemFunction.Data<EnchantData> ofProgression(Enchantment enchantment) {
-        return of(ENCHANT, new EnchantData(enchantment, 1, 1,true, true));
+    public static ItemFunction.Data<EnchantData> ofProgression(int fixedLevel, Enchantment... enchantments) {
+        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(true, false, fixedLevel, enchantments));
     }
 
-    public static ItemFunction.Data<EnchantData> of(Enchantment enchantment, int minLevel, int maxLevel, boolean useSameEnchantment, boolean useVillagerLevel) {
-        return of(ENCHANT, new EnchantData(enchantment, minLevel, maxLevel, useSameEnchantment, useVillagerLevel));
+    public static ItemFunction.Data<EnchantData> ofSingle(int fixedLevel, Enchantment... enchantments) {
+        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(false, false, fixedLevel, enchantments));
     }
 
     @Contract("_, _ -> new")

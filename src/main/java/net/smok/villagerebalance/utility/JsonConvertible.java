@@ -2,6 +2,7 @@ package net.smok.villagerebalance.utility;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
+import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSyntaxException;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -21,12 +22,17 @@ public interface JsonConvertible<T> extends JsonMaker {
 
     static <T> T getRegister(@NotNull JsonObject json, String key, Registry<T> registry, T defaultValue) {
         if (json.has(key) && json.get(key).isJsonPrimitive() && json.getAsJsonPrimitive(key).isString()) {
-            Identifier id = new Identifier(json.getAsJsonPrimitive(key).getAsString());
-            Optional<T> entry = registry.getOrEmpty(id);
-            if (entry.isPresent()) return entry.get();
-            else throw new JsonParseException("Unknown id " + id + " of type " + registry.getKey().toString());
+            JsonPrimitive primitive = json.getAsJsonPrimitive(key);
+            return asRegister(registry, primitive);
         }
         return defaultValue;
+    }
+
+    static <T> @NotNull T asRegister(Registry<T> registry, JsonPrimitive primitive) {
+        Identifier id = new Identifier(primitive.getAsString());
+        Optional<T> entry = registry.getOrEmpty(id);
+        if (entry.isPresent()) return entry.get();
+        else throw new JsonParseException("Unknown id " + id + " of type " + registry.getKey().toString());
     }
 
     static <T> T getRegister(@NotNull JsonObject json, String key, Registry<T> registry) {

@@ -5,10 +5,10 @@
     "villager_profession": "minecraft:farmer"
   },
   "first_buy": {
-    "count": 4,
+    "count": 12,
     "id": "minecraft:emerald"
   },
-  "max_uses": 12,
+  "max_uses": 4,
   "merchant_experience": 40,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,

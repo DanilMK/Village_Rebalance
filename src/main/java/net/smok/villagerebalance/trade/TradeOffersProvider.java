@@ -91,12 +91,110 @@ public class TradeOffersProvider {
         fillButcher();
         fillCleric();
         fillFisherman();
-
+        fillFletcher();
+        fillArmorer();
 
     }
 
+    private void fillArmorer() {
+        buyForEmerald("coal", 1, 12, item(Items.COAL, 15));
+        buyForEmerald("iron_ingot", 2, 12, item(Items.IRON_INGOT, 4));
+        buyForEmerald("lava_bucket", 3, 12, item(Items.LAVA_BUCKET, 1));
+        buyForEmerald("diamond", 4, 12, item(Items.DIAMOND, 1));
+
+        sellDistributeForBiomes(12, 3, new Item[]{Items.CHAINMAIL_BOOTS, Items.IRON_BOOTS, Items.IRON_BOOTS, Items.DIAMOND_BOOTS, Items.ENCHANTED_BOOK}, 
+                Map.of(
+                        VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
+                        VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
+                        VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
+                        VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
+                        VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER}
+                )
+        );
+        
+        sellDistributeForBiomes(12, 5, new Item[]{Items.CHAINMAIL_LEGGINGS, Items.IRON_LEGGINGS, Items.IRON_LEGGINGS, Items.DIAMOND_LEGGINGS, Items.ENCHANTED_BOOK},
+                Map.of(
+                        VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION},
+                        VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
+                        VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
+                        VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION},
+                        VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS},
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS}
+                )
+        );
+        
+        sellDistributeForBiomes(12, 6, new Item[]{Items.CHAINMAIL_CHESTPLATE, Items.IRON_CHESTPLATE, Items.IRON_CHESTPLATE, Items.DIAMOND_CHESTPLATE, Items.ENCHANTED_BOOK},
+                Map.of(
+                        VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION},
+                        VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
+                        VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
+                        VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION},
+                        VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS},
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS}
+                )
+        );
+        
+        sellDistributeForBiomes(12, 3, new Item[]{Items.CHAINMAIL_HELMET, Items.IRON_HELMET, Items.IRON_HELMET, Items.DIAMOND_HELMET, Items.ENCHANTED_BOOK},
+                Map.of(
+                        VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
+                        VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
+                        VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
+                        VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
+                        VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY}
+                )
+        );
+
+    }
 
     private void fillFletcher() {
+        buyForEmerald("stick", 1, 12, item(Items.STICK, 32));
+        sellForEmerald("arrow", 1, 12, item(Items.ARROW, 16));
+        //sellForEmerald("flint", 1, 12, item(Items.FLINT, 10));
+
+        buyForEmerald("flint", 2, 12, item(Items.FLINT, 26));
+
+        buyForEmerald("string", 3, 12, item(Items.STRING, 14));
+
+        buyForEmerald("feather", 4, 12, item(Items.FEATHER, 24));
+        sellForEmerald("tipped_arrow", 4, 12, item(Items.TIPPED_ARROW, 5)); // todo add effect
+
+        buyForEmerald("tripwire_hook", 5, 12, item(Items.TRIPWIRE_HOOK, 8));
+        sellForEmerald("dispenser", 5, 12, item(Items.DISPENSER, 1));
+
+
+        sellForEmerald("bow_1", 1, 3, 5,
+                item(Items.BOW, ItemFunctions.ofSingle(Enchantments.FLAME, Enchantments.INFINITY)));
+
+        sellForEmerald("bow_2", 2, 3, 13,
+                item(Items.BOW, ItemFunctions.ofProgression(Enchantments.POWER, Enchantments.PUNCH)));
+
+        sellForEmerald("bow_3", 3, 3, 18,
+                item(Items.BOW, ItemFunctions.ofProgression(Enchantments.POWER, Enchantments.PUNCH)));
+
+        sellForEmerald("bow_4", 4, 3, 22,
+                item(Items.BOW, ItemFunctions.ofProgression(Enchantments.POWER, Enchantments.PUNCH)));
+
+        sellForEmerald("bow_5", 5, 3, 25,
+                item(Items.ENCHANTED_BOOK, ItemFunctions.ofProgression(Enchantments.POWER, Enchantments.PUNCH, Enchantments.FLAME, Enchantments.INFINITY)));
+
+        sellForEmerald("crossbow_1", 1, 3, 8,
+                item(Items.CROSSBOW, ItemFunctions.ofSingle(Enchantments.MULTISHOT, Enchantments.QUICK_CHARGE))
+        );
+
+        sellForEmerald("crossbow_2", 2, 3, 15,
+                item(Items.CROSSBOW, ItemFunctions.ofProgression(Enchantments.PIERCING, Enchantments.QUICK_CHARGE))
+        );
+
+        sellForEmerald("crossbow_3", 3, 3, 20,
+                item(Items.CROSSBOW, ItemFunctions.ofProgression(Enchantments.PIERCING, Enchantments.QUICK_CHARGE))
+        );
+
+        sellForEmerald("crossbow_3", 3, 3, 20,
+                item(Items.CROSSBOW, ItemFunctions.ofProgression(Enchantments.PIERCING, Enchantments.QUICK_CHARGE))
+        );
+
 
     }
 
@@ -118,6 +216,7 @@ public class TradeOffersProvider {
         sellForEmerald("campfire", 4, 12,2, item(Items.CAMPFIRE));
 
         buyForEmerald("pufferfish", 5, 12, item(Items.PUFFERFISH, 4));
+
         sellDistributeForBiomes("boats", 5, 1, 1, 12, BOATS, Map.of(
                 VillagerType.SWAMP, new int[] {DARK_OAK},
                 VillagerType.SAVANNA, new int[] {ACACIA},
@@ -131,23 +230,19 @@ public class TradeOffersProvider {
 
         
         sellForEmerald("fishing_rod_1", 1, 3, 8,
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LURE, 1, 3, true, true)),
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LUCK_OF_THE_SEA, 1, 3, true, true))
+                item(Items.FISHING_ROD, ItemFunctions.ofProgression(Enchantments.LURE, Enchantments.LUCK_OF_THE_SEA))
         );
 
         sellForEmerald("fishing_rod_2", 2, 3, 18,
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LURE, 2, 3, true, true)),
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LUCK_OF_THE_SEA, 2, 3, true, true))
+                item(Items.FISHING_ROD, ItemFunctions.ofProgression(Enchantments.LURE, Enchantments.LUCK_OF_THE_SEA))
         );
 
         sellForEmerald("fishing_rod_3", 3, 3, 25,
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LURE, 3, 3, true, true)),
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LUCK_OF_THE_SEA, 3, 3, true, true))
+                item(Items.FISHING_ROD, ItemFunctions.ofProgression(Enchantments.LURE, Enchantments.LUCK_OF_THE_SEA))
         );
 
         sellForEmerald("fishing_book_3", 5, 12, 25,
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LURE, 3, 3, true, true)),
-                item(Items.FISHING_ROD, ItemFunctions.of(Enchantments.LUCK_OF_THE_SEA, 3, 3, true, true))
+                item(Items.FISHING_ROD, ItemFunctions.ofProgression(Enchantments.LURE, Enchantments.LUCK_OF_THE_SEA))
         );
 
 
@@ -229,7 +324,7 @@ public class TradeOffersProvider {
         );
 
 
-        putByData("ocean_explorer_map",
+        putTradeOffer("ocean_explorer_map",
                 new ItemContainer[]{item(Items.EMERALD, 13)},
                 new ItemContainer[]{item(Items.COMPASS)},
                 new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(MapData.OCEAN))},
@@ -237,7 +332,7 @@ public class TradeOffersProvider {
 
         buyForEmerald("compass", 3, 12, item(Items.COMPASS));
 
-        putByData("woodland_explorer_map",
+        putTradeOffer("woodland_explorer_map",
                 new ItemContainer[]{item(Items.EMERALD, 14)},
                 new ItemContainer[]{item(Items.COMPASS)},
                 new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(MapData.WOODLAND))},
@@ -413,70 +508,91 @@ public class TradeOffersProvider {
 
     }
 
+    private void sellDistributeForBiomes(int maxUses, int emeralds, Item[] items, Map<VillagerType, Enchantment[]> enchantmentsForBiome) {
+        for (int i = 0; i < items.length; i++) {
+            for (Map.Entry<VillagerType, Enchantment[]> entry : enchantmentsForBiome.entrySet()) {
+                String id = items[i].toString();
+                ItemContainer[] container = new ItemContainer[]{item(items[i], ItemFunctions.ofProgression(entry.getValue()))};
+                VillagerData data = new VillagerData(entry.getKey(), profession, i);
+                if (i == 0) putTradeOffer(id, new ItemContainer[]{item(i * emeralds)}, ItemContainer.EMPTY, container, maxUses,
+                        0.05f, experienceByLevel(i), data);
+                else putTradeOffer(id, new ItemContainer[]{item(i * emeralds)}, ItemContainer.EMPTY, container, maxUses,
+                        0.05f, experienceByLevel(i), data, Conditions.ofSell(items[i]));
+            }
+        }
+    }
 
-    private void buyForEmerald(String id, int level, int maxUses,
-                               ItemContainer... container) {
-        VillagerData data = new VillagerData(null, profession, level);
-        putByData(id, container, ItemContainer.EMPTY, new ItemContainer[]{item(1)}, maxUses,
+    private void buyForEmerald(String id, int level, int maxUses, ItemContainer... container) {
+        buyForEmerald(id, level, maxUses, 1, container);
+    }
+
+    private void sellForEmerald(String id, int level, int maxUses, ItemContainer... container) {
+        sellForEmerald(id, level, maxUses, 1, container);
+    }
+
+    private void buyForEmerald(String id, int level, int maxUses, int emeralds, ItemContainer... container) {
+        buyForEmerald(id, null, level, emeralds, maxUses, container);
+    }
+
+    private void sellForEmerald(String id, int level, int maxUses, int emeralds, ItemContainer... container) {
+        sellForEmerald(id, null, level, emeralds, maxUses, container);
+    }
+
+    private void buyForEmerald(String id, VillagerType type, int level, int maxUses, ItemContainer... container) {
+        buyForEmerald(id, type, level, maxUses, 1, container);
+    }
+
+    private void sellForEmerald(String id, VillagerType type, int level, int maxUses, ItemContainer... container) {
+        sellForEmerald(id, type, level, maxUses, 1, container);
+    }
+
+    private void buyForEmerald(String id, VillagerType type, int level, int maxUses, int emeralds, ItemContainer... container) {
+        VillagerData data = new VillagerData(type, profession, level);
+        putTradeOffer(id, container, ItemContainer.EMPTY, new ItemContainer[]{item(emeralds)}, maxUses,
                 0.05f, experienceByLevel(level), data);
     }
 
-    private void sellForEmerald(String id, int level, int maxUses,
-                                ItemContainer... container) {
-        VillagerData data = new VillagerData(null, profession, level);
-        putByData(id, new ItemContainer[]{item(1)}, ItemContainer.EMPTY, container, maxUses,
-                0.05f, experienceByLevel(level), data);
-    }
-
-    private void buyForEmerald(String id, int level, int maxUses, int price,
-                               ItemContainer... container) {
-        VillagerData data = new VillagerData(null, profession, level);
-        putByData(id, container, ItemContainer.EMPTY, new ItemContainer[]{item(price)}, maxUses,
-                0.05f, experienceByLevel(level), data);
-    }
-
-    private void sellForEmerald(String id, int level, int maxUses, int price,
-                                ItemContainer... container) {
-        VillagerData data = new VillagerData(null, profession, level);
-        putByData(id, new ItemContainer[]{item(price)}, ItemContainer.EMPTY, container, maxUses,
+    private void sellForEmerald(String id, VillagerType type, int level, int maxUses, int emeralds, ItemContainer... container) {
+        VillagerData data = new VillagerData(type, profession, level);
+        putTradeOffer(id, new ItemContainer[]{item(emeralds)}, ItemContainer.EMPTY, container, maxUses,
                 0.05f, experienceByLevel(level), data);
     }
 
     private void buyDistributeForBiomes(String id, int level, int emeralds, int price,
-                                        int maxUses, Item[] items, Map<VillagerType, int[]> colors) {
+                                        int maxUses, Item[] items, Map<VillagerType, int[]> typeMap) {
 
-        colors.forEach((type, color) ->
-                putByData(id, Arrays.stream(color).mapToObj(i -> item(items[i], price)).toArray(ItemContainer[]::new),
+        typeMap.forEach((type, color) ->
+                putTradeOffer(id, Arrays.stream(color).mapToObj(i -> item(items[i], price)).toArray(ItemContainer[]::new),
                 ItemContainer.EMPTY,
                 new ItemContainer[]{item(emeralds)},
                 maxUses, 0.05f, experienceByLevel(level),
                 new VillagerData(type, profession, level)));
     }
     private void sellDistributeForBiomes(String id, int level, int emeralds, int price,
-                                         int maxUses, Item[] items, Map<VillagerType, int[]> colors) {
-        colors.forEach((type, color) ->
-                putByData(id, new ItemContainer[]{item(emeralds)},
+                                         int maxUses, Item[] items, Map<VillagerType, int[]> typeMap) {
+        typeMap.forEach((type, color) ->
+                putTradeOffer(id, new ItemContainer[]{item(emeralds)},
                 ItemContainer.EMPTY,
                 Arrays.stream(color).mapToObj(i -> item(items[i], price)).toArray(ItemContainer[]::new),
                 maxUses, 0.05f, experienceByLevel(level),
                 new VillagerData(type, profession, level)));
     }
 
-    private void putByData(String id, @NotNull ItemContainer[] item1, @NotNull ItemContainer[] item2, @NotNull ItemContainer[] sell,
-                           int maxUses, boolean rewardPlayer, float priceMultiplier, int experience, VillagerData data, Condition.Data<?> condition) {
-        if (data.type() != null) id = data.type() + "/" + id;
-        if (data.profession() != null) id = data.profession() + "/" + id;
-        OfferFactory factory = new OfferFactory(item1, item2, sell,
-                maxUses, rewardPlayer, priceMultiplier, experience, Conditions.and(Conditions.of(data), condition));
-        objects.put(new Identifier(Values.MOD_ID, id), factory);
-    }
-
-    private void putByData(String id, @NotNull ItemContainer[] item1, @NotNull ItemContainer[] item2, @NotNull ItemContainer[] sell,
-                           int maxUses, float priceMultiplier, int experience, VillagerData data) {
+    private void putTradeOffer(String id, @NotNull ItemContainer[] item1, @NotNull ItemContainer[] item2, @NotNull ItemContainer[] sell,
+                               int maxUses, float priceMultiplier, int experience, VillagerData data) {
         if (data.type() != null) id = data.type() + "/" + id;
         if (data.profession() != null) id = data.profession() + "/" + id;
         OfferFactory factory = new OfferFactory(item1, item2, sell,
                 maxUses, true, priceMultiplier, experience, Conditions.of(data));
+        objects.put(new Identifier(Values.MOD_ID, id), factory);
+    }
+
+    private void putTradeOffer(String id, @NotNull ItemContainer[] item1, @NotNull ItemContainer[] item2, @NotNull ItemContainer[] sell,
+                               int maxUses, float priceMultiplier, int experience, VillagerData data, Condition.Data<?> additionalCondition) {
+        if (data.type() != null) id = data.type() + "/" + id;
+        if (data.profession() != null) id = data.profession() + "/" + id;
+        OfferFactory factory = new OfferFactory(item1, item2, sell,
+                maxUses, true, priceMultiplier, experience, Conditions.and(Conditions.of(data), additionalCondition));
         objects.put(new Identifier(Values.MOD_ID, id), factory);
     }
 
@@ -528,12 +644,6 @@ public class TradeOffersProvider {
     public static int experienceByLevel(int level) {
         if (level == 0) return 1;
         return MathHelper.clamp((level - 1) * 10, 2, 50);
-    }
-
-
-
-    private void putSimple(String id, OfferFactory factory) {
-        objects.put(new Identifier(Values.MOD_ID, id), factory);
     }
 
 

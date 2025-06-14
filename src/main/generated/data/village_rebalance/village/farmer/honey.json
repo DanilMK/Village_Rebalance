@@ -8,11 +8,12 @@
     "count": 12,
     "id": "minecraft:honey_bottle"
   },
-  "max_uses": 12,
+  "max_uses": 1,
   "merchant_experience": 20,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,
   "sell": {
+    "count": 12,
     "id": "minecraft:emerald"
   }
 }
