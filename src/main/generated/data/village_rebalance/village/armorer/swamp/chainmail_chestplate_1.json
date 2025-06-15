@@ -1,0 +1,30 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 1,
+    "villager_profession": "minecraft:armorer",
+    "villager_type": "minecraft:swamp"
+  },
+  "first_buy": {
+    "count": 6,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 12,
+  "merchant_experience": 2,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "functions": [
+      {
+        "enchantments": "minecraft:thorns",
+        "fixed_level": 0,
+        "function_type": "village_rebalance:enchantment",
+        "use_same_enchantment": true,
+        "use_villager_level": true
+      }
+    ],
+    "item": {
+      "id": "minecraft:chainmail_chestplate"
+    }
+  }
+}

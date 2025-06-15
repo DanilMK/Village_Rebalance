@@ -1,0 +1,25 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 3,
+    "villager_profession": "minecraft:shepherd",
+    "villager_type": "minecraft:snow"
+  },
+  "first_buy": [
+    {
+      "count": 40,
+      "id": "minecraft:spruce_fence"
+    },
+    {
+      "count": 40,
+      "id": "minecraft:dark_oak_fence"
+    }
+  ],
+  "max_uses": 16,
+  "merchant_experience": 20,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "id": "minecraft:emerald"
+  }
+}

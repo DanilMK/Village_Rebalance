@@ -11,14 +11,16 @@ import java.util.Map;
 public record TradeOffers(Map<Identifier, OfferFactory> offers) {
 
     public @NotNull List<OfferFactory> get(MerchantEntity entity, int addRecipeCount) {
-        List<OfferFactory> offerPool = offers.values().stream().filter(offer -> offer
-                .match(entity)).toList();
+        List<OfferFactory> offerPool = new ArrayList<>(offers.values().stream().filter(offer -> offer
+                .match(entity)).toList());
 
 
         if (offerPool.size() > addRecipeCount) {
             List<OfferFactory> offers = new ArrayList<>();
             while (offers.size() < addRecipeCount) {
-                offers.add(offerPool.get(entity.getRandom().nextInt(offerPool.size())));
+                int randomIndex = entity.getRandom().nextInt(offerPool.size());
+                offers.add(offerPool.get(randomIndex));
+                offerPool.remove(randomIndex);
             }
             return offers;
         } else {

@@ -1,0 +1,27 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 4,
+    "villager_profession": "minecraft:shepherd",
+    "villager_type": "minecraft:swamp"
+  },
+  "first_buy": {
+    "count": 3,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 16,
+  "merchant_experience": 30,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "id": "minecraft:light_gray_bed"
+    },
+    {
+      "id": "minecraft:magenta_bed"
+    },
+    {
+      "id": "minecraft:pink_bed"
+    }
+  ]
+}

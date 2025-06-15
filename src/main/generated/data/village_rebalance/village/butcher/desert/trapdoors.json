@@ -13,14 +13,8 @@
   "merchant_experience": 30,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,
-  "sell": [
-    {
-      "count": 3,
-      "id": "minecraft:iron_trapdoor"
-    },
-    {
-      "count": 3,
-      "id": "minecraft:jungle_trapdoor"
-    }
-  ]
+  "sell": {
+    "count": 3,
+    "id": "minecraft:jungle_trapdoor"
+  }
 }

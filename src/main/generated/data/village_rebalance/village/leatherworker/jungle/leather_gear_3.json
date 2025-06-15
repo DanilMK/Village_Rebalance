@@ -1,0 +1,282 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 3,
+    "villager_profession": "minecraft:leatherworker",
+    "villager_type": "minecraft:jungle"
+  },
+  "first_buy": {
+    "count": 4,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 12,
+  "merchant_experience": 20,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "functions": [
+        {
+          "color": 7844892,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_leggings"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 10510124,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_leggings"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 1656789,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_leggings"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 7844892,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_chestplate"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 10510124,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_chestplate"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 1656789,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_chestplate"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 7844892,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_helmet"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 10510124,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_helmet"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 1656789,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_helmet"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 7844892,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_boots"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 10510124,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_boots"
+      }
+    },
+    {
+      "functions": [
+        {
+          "color": 1656789,
+          "function_type": "village_rebalance:leather_color",
+          "use_same_color": true
+        },
+        {
+          "enchantments": [
+            "minecraft:protection",
+            "minecraft:unbreaking"
+          ],
+          "fixed_level": 2,
+          "function_type": "village_rebalance:enchantment",
+          "use_same_enchantment": false,
+          "use_villager_level": false
+        }
+      ],
+      "item": {
+        "id": "minecraft:leather_boots"
+      }
+    }
+  ]
+}

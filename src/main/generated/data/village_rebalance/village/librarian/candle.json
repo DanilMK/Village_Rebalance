@@ -1,0 +1,81 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 4,
+    "villager_profession": "minecraft:librarian"
+  },
+  "first_buy": [
+    {
+      "count": 4,
+      "id": "minecraft:white_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:light_gray_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:gray_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:black_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:brown_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:red_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:orange_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:yellow_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:lime_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:green_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:cyan_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:light_blue_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:blue_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:purple_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:magenta_candle"
+    },
+    {
+      "count": 4,
+      "id": "minecraft:pink_candle"
+    }
+  ],
+  "max_uses": 12,
+  "merchant_experience": 30,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "count": 2,
+    "id": "minecraft:emerald"
+  }
+}

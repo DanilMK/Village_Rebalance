@@ -8,12 +8,11 @@
     "count": 10,
     "id": "minecraft:dried_kelp_block"
   },
-  "max_uses": 1,
+  "max_uses": 16,
   "merchant_experience": 30,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,
   "sell": {
-    "count": 16,
     "id": "minecraft:emerald"
   }
 }

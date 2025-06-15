@@ -1,0 +1,37 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 2,
+    "villager_profession": "minecraft:weaponsmith",
+    "villager_type": "minecraft:desert"
+  },
+  "first_buy": {
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 12,
+  "merchant_experience": 10,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "second_buy": {
+    "id": "minecraft:book"
+  },
+  "sell": {
+    "functions": [
+      {
+        "enchantments": [
+          "minecraft:impaling",
+          "minecraft:loyalty",
+          "minecraft:channeling",
+          "minecraft:riptide"
+        ],
+        "fixed_level": 0,
+        "function_type": "village_rebalance:enchantment",
+        "use_same_enchantment": true,
+        "use_villager_level": true
+      }
+    ],
+    "item": {
+      "id": "minecraft:enchanted_book"
+    }
+  }
+}

@@ -5,6 +5,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
+
 public record RegisteredField<T>(Registry<T> registry, T value) implements JsonConvertible<RegisteredField<T>> {
     @Override
     public RegisteredField<T> childFromJson(@NotNull JsonObject json) {
@@ -15,6 +17,12 @@ public record RegisteredField<T>(Registry<T> registry, T value) implements JsonC
     @Override
     public void toJson(@NotNull JsonObject json) {
         Identifier id = registry.getId(value);
-        if (id != null) json.addProperty("value", value.toString());
+        if (id != null) json.addProperty("value", id.toString());
+    }
+
+    public Optional<String> valueToString() {
+        Identifier id = registry.getId(value);
+        if (id == null) return Optional.empty();
+        return Optional.of(id.toString());
     }
 }

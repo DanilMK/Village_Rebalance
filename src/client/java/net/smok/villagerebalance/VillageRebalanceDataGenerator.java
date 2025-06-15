@@ -9,7 +9,7 @@ import net.minecraft.data.DataWriter;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
 import net.smok.villagerebalance.trade.OfferFactory;
-import net.smok.villagerebalance.trade.TradeOffersProvider;
+import net.smok.villagerebalance.trade.data.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,9 @@ import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 public class VillageRebalanceDataGenerator implements DataGeneratorEntrypoint {
+
+
+
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
 
@@ -36,10 +39,12 @@ public class VillageRebalanceDataGenerator implements DataGeneratorEntrypoint {
 		@Override
 		public CompletableFuture<?> run(DataWriter writer) {
 			final List<CompletableFuture<?>> futures = new ArrayList<>();
-			TradeOffersProvider tradeOffersProvider = new TradeOffersProvider();
-			tradeOffersProvider.fill();
-			for (Map.Entry<Identifier, OfferFactory> entry : tradeOffersProvider.getObjects().entrySet()) {
-				futures.add(DataProvider.writeToPath(writer, entry.getValue().toJson(), pathResolver.resolveJson(entry.getKey())));
+
+			for (TradeOffersProvider provider : TradeOffersProviders.providers) {
+				provider.fill();
+				for (Map.Entry<Identifier, OfferFactory> entry : provider.getObjects().entrySet()) {
+					futures.add(DataProvider.writeToPath(writer, entry.getValue().toJson(), pathResolver.resolveJson(entry.getKey())));
+				}
 			}
 
 			return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));

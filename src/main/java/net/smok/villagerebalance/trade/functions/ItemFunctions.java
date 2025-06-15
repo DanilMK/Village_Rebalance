@@ -3,6 +3,7 @@ package net.smok.villagerebalance.trade.functions;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
+import net.minecraft.entity.decoration.painting.PaintingVariant;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.MerchantEntity;
@@ -110,6 +111,22 @@ public final class ItemFunctions {
             }));
 
 
+    public static final ItemFunction<RegisteredField<PaintingVariant>> PAINTING = register("painting", new ItemFunction<>(
+            new RegisteredField<>(Registries.PAINTING_VARIANT, null),
+            (itemStack, entity, variant) -> {
+                Optional<String> value = variant.valueToString();
+
+                if (value.isPresent()) {
+                    NbtCompound nbt = itemStack.getOrCreateNbt();
+                    NbtCompound entityTag = nbt.getCompound("EntityTag");
+                    if (entityTag == null) entityTag = new NbtCompound();
+                    entityTag.putString("variant", value.get());
+                    nbt.put("EntityTag", entityTag);
+                }
+            })
+    );
+
+
     private static <T> Optional<T> foreachOffer(MerchantEntity entity, Function<ItemStack, Optional<T>> function) {
         for (TradeOffer offer : entity.getOffers()) {
             if (offer.getSellItem().hasNbt()) {
@@ -136,13 +153,12 @@ public final class ItemFunctions {
     public static ItemFunction.Data<EnchantData> ofSingle(Enchantment... enchantments) {
         return new ItemFunction.Data<>(ENCHANT, EnchantData.of(false, false, 0, enchantments));
     }
-
-    public static ItemFunction.Data<EnchantData> ofProgression(int fixedLevel, Enchantment... enchantments) {
-        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(true, false, fixedLevel, enchantments));
-    }
-
     public static ItemFunction.Data<EnchantData> ofSingle(int fixedLevel, Enchantment... enchantments) {
         return new ItemFunction.Data<>(ENCHANT, EnchantData.of(false, false, fixedLevel, enchantments));
+    }
+
+    public static ItemFunction.Data<?> ofColor(int color, boolean useSameColor) {
+        return new ItemFunction.Data<>(LEATHER_COLOR, new ColorField(color, true));
     }
 
     @Contract("_, _ -> new")
@@ -168,6 +184,10 @@ public final class ItemFunctions {
 
     public static ItemFunction.Data<?> of(Potion potion) {
         return of(POTION, new RegisteredField<>(Registries.POTION, potion));
+    }
+
+    public static ItemFunction.Data<?> of(PaintingVariant variant) {
+        return of(PAINTING, new RegisteredField<>(Registries.PAINTING_VARIANT, variant));
     }
 
     private static Optional<Integer> getColor(ItemStack itemStack1) {

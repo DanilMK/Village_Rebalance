@@ -1,0 +1,29 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:villager_data",
+    "villager_level": 2,
+    "villager_profession": "minecraft:shepherd",
+    "villager_type": "minecraft:snow"
+  },
+  "first_buy": [
+    {
+      "count": 12,
+      "id": "minecraft:white_dye"
+    },
+    {
+      "count": 12,
+      "id": "minecraft:blue_dye"
+    },
+    {
+      "count": 12,
+      "id": "minecraft:black_dye"
+    }
+  ],
+  "max_uses": 16,
+  "merchant_experience": 10,
+  "price_multiplier": 0.05,
+  "rewarding_player_experience": true,
+  "sell": {
+    "id": "minecraft:emerald"
+  }
+}

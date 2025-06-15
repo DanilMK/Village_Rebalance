@@ -5,10 +5,9 @@
     "villager_profession": "minecraft:butcher"
   },
   "first_buy": {
-    "count": 16,
     "id": "minecraft:emerald"
   },
-  "max_uses": 1,
+  "max_uses": 16,
   "merchant_experience": 20,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,

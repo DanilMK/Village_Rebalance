@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.resource.SimpleSynchronousResourceReloadListener;
 import net.minecraft.resource.Resource;
 import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.InvalidIdentifierException;
 import net.minecraft.util.JsonHelper;
 import net.smok.villagerebalance.Debug;
 import net.smok.villagerebalance.Values;
@@ -36,12 +37,13 @@ public class OffersLoader implements SimpleSynchronousResourceReloadListener {
                 if (!factory.isEmpty()) builder.put(entry.getKey(), factory);
                 else Debug.warn("Offer " + entry.getKey() + " is empty\n" + factory);
 
-            } catch (JsonParseException e) {
+            } catch (JsonParseException | InvalidIdentifierException e) {
                 Debug.warn("Error occurred while loading resource json " + entry.getKey());
                 Debug.err(e.toString());
             }
         }
         TradeRegistries.tradeOffers = new TradeOffers(builder.build());
+        Debug.log("Loaded offers: " + String.join(", ", TradeRegistries.tradeOffers.offers().keySet().stream().map(Identifier::toString).toList()));
     }
 
 

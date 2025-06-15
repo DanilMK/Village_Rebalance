@@ -7,12 +7,11 @@
   "first_buy": {
     "id": "minecraft:paper"
   },
-  "max_uses": 1,
+  "max_uses": 12,
   "merchant_experience": 2,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,
   "sell": {
-    "count": 12,
     "id": "minecraft:emerald"
   }
 }
