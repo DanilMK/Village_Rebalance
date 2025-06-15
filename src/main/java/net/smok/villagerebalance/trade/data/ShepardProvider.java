@@ -34,6 +34,6 @@ public class ShepardProvider extends TradeOffersProvider {
         //sellDistributeForBiomes("banners", 4, 3, 3, 16, BANNERS, colorsDistribute);
 
 
-        sellForEmerald("painting", VillagerType.DESERT, 5, 12, 2, item(Items.PAINTING, 3, ItemFunctions.of((PaintingVariant) null)));
+        sellForEmerald("painting", VillagerType.DESERT, 5, 12, 2, item(Items.PAINTING, 3));
     }
 }
