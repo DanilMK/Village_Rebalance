@@ -34,7 +34,9 @@ public class OffersLoader implements SimpleSynchronousResourceReloadListener {
             try {
                 OfferFactory factory = OfferFactory.DEFAULT_FACTORY.childFromJson(entry.getValue());
 
-                if (!factory.isEmpty()) builder.put(entry.getKey(), factory);
+                Identifier id = new Identifier(entry.getKey().getNamespace(), entry.getKey().getPath().split("\\.")[0]);
+
+                if (!factory.isEmpty()) builder.put(id, factory);
                 else Debug.warn("Offer " + entry.getKey() + " is empty\n" + factory);
 
             } catch (JsonParseException | InvalidIdentifierException e) {
