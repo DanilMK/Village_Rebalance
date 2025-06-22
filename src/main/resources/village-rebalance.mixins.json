@@ -3,6 +3,7 @@
   "package": "net.smok.villagerebalance.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MerchantMixin",
     "VillagerMixin"
   ],
   "injectors": {
