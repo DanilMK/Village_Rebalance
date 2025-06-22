@@ -25,11 +25,11 @@ public class MasonProvider extends TradeOffersProvider {
         sellForEmerald("brick",
                 1, 16, item(Items.BRICK, 10));
 
-        buyForEmerald("tri_stones",
+        buyForEmerald("stones",
                 2, 16,
                 item(Items.ANDESITE, 16, Items.DIORITE, 16, Items.GRANITE, 16));
 
-        sellForEmerald("tri_polished_stones",
+        sellForEmerald("polished_stones",
                 2, 16,
                 item(Items.POLISHED_ANDESITE, 4, Items.POLISHED_DIORITE, 4, Items.POLISHED_GRANITE, 4));
 
@@ -65,7 +65,7 @@ public class MasonProvider extends TradeOffersProvider {
                 VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
                 VillagerType.SAVANNA, new int[] {RED, YELLOW, MAGENTA},
                 VillagerType.SNOW, new int[] {WHITE, LIGHT_GRAY, GRAY, CYAN},
-                VillagerType.SWAMP, new int[] {GRAY, BLUE, BLUE},
+                VillagerType.SWAMP, new int[] {GRAY, BLUE, LIGHT_BLUE},
                 VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
         ));
 
@@ -75,7 +75,7 @@ public class MasonProvider extends TradeOffersProvider {
                 VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
                 VillagerType.SAVANNA, new int[] {RED, YELLOW, MAGENTA},
                 VillagerType.SNOW, new int[] {WHITE, LIGHT_GRAY, GRAY, CYAN},
-                VillagerType.SWAMP, new int[] {GRAY, BLUE, BLUE},
+                VillagerType.SWAMP, new int[] {GRAY, BLUE, LIGHT_BLUE},
                 VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
         ));
 
@@ -85,17 +85,17 @@ public class MasonProvider extends TradeOffersProvider {
                 VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
                 VillagerType.SAVANNA, new int[] {RED, YELLOW, MAGENTA},
                 VillagerType.SNOW, new int[] {WHITE, LIGHT_GRAY, GRAY, CYAN},
-                VillagerType.SWAMP, new int[] {GRAY, BLUE, BLUE},
+                VillagerType.SWAMP, new int[] {GRAY, BLUE, LIGHT_BLUE},
                 VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
         ));
 
         buyForEmerald("nether_quartz",
-                1, 16, item(Items.QUARTZ, 12));
+                5, 16, item(Items.QUARTZ, 12));
 
         sellForEmerald("quartz_block",
-                1, 16, item(Items.QUARTZ_BLOCK));
+                5, 16, item(Items.QUARTZ_BLOCK));
         sellForEmerald("quartz_pillar",
-                1, 16, item(Items.QUARTZ_PILLAR));
+                5, 16, item(Items.QUARTZ_PILLAR));
 
     }
 }
