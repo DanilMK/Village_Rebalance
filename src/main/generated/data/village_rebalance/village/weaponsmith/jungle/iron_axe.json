@@ -10,7 +10,7 @@
     "id": "minecraft:emerald"
   },
   "max_uses": 3,
-  "merchant_experience": 2,
+  "merchant_experience": 1,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,
   "sell": {

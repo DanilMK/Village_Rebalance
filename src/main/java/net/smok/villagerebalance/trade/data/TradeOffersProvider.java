@@ -125,9 +125,9 @@ public abstract class TradeOffersProvider {
                 ItemContainer[] container = new ItemContainer[]{item(item, ItemFunctions.ofProgression(entry.getValue()))};
                 VillagerData data = new VillagerData(entry.getKey(), profession, i);
                 if (i == 1) putTradeOffer(id, new ItemContainer[]{item(emeralds)}, ItemContainer.EMPTY, container, maxUses,
-                        0.05f, experienceByLevel(i), data);
+                        0.05f, experienceByLevelSell(i), data);
                 else putTradeOffer(id, new ItemContainer[]{item(i * emeralds)}, ItemContainer.EMPTY, container, maxUses,
-                        0.05f, experienceByLevel(i), data, Conditions.ofSell(items[0]));
+                        0.05f, experienceByLevelSell(i), data, Conditions.ofSell(items[0]));
             }
         }
     }
@@ -144,7 +144,7 @@ public abstract class TradeOffersProvider {
                 new ItemContainer[]{item(1)},
                 new ItemContainer[]{ItemContainer.of(new ItemStack(Items.BOOK))},
                 new ItemContainer[]{ItemContainer.of(new ItemStack(Items.ENCHANTED_BOOK), ItemFunctions.ofProgression(enchantments))},
-                12, 0.05f, experienceByLevel(level), data);
+                12, 0.05f, experienceByLevelSell(level), data);
     }
 
     protected void buyForEmerald(String id, int level, int maxUses, ItemContainer... container) {
@@ -174,25 +174,25 @@ public abstract class TradeOffersProvider {
     protected void buyForEmerald(String id, VillagerType type, int level, int maxUses, int emeralds, ItemContainer... container) {
         VillagerData data = new VillagerData(type, profession, level);
         putTradeOffer(id, container, ItemContainer.EMPTY, new ItemContainer[]{item(emeralds)}, maxUses,
-                0.05f, experienceByLevel(level), data);
+                0.05f, experienceByLevelBuy(level), data);
     }
 
     protected void sellForEmerald(String id, VillagerType type, int level, int maxUses, int emeralds, ItemContainer... container) {
         VillagerData data = new VillagerData(type, profession, level);
         putTradeOffer(id, new ItemContainer[]{item(emeralds)}, ItemContainer.EMPTY, container, maxUses,
-                0.05f, experienceByLevel(level), data);
+                0.05f, experienceByLevelSell(level), data);
     }
 
     protected void buyForEmerald(String id, VillagerType type, int level, int maxUses, int emeralds, Condition.Data<?> condition, ItemContainer... container) {
         VillagerData data = new VillagerData(type, profession, level);
         putTradeOffer(id, container, ItemContainer.EMPTY, new ItemContainer[]{item(emeralds)}, maxUses,
-                0.05f, experienceByLevel(level), data, condition);
+                0.05f, experienceByLevelBuy(level), data, condition);
     }
 
     protected void sellForEmerald(String id, VillagerType type, int level, int maxUses, int emeralds, Condition.Data<?> condition, ItemContainer... container) {
         VillagerData data = new VillagerData(type, profession, level);
         putTradeOffer(id, new ItemContainer[]{item(emeralds)}, ItemContainer.EMPTY, container, maxUses,
-                0.05f, experienceByLevel(level), data, condition);
+                0.05f, experienceByLevelSell(level), data, condition);
     }
 
     protected void buyDistributeForBiomes(String id, int level, int emeralds, int price,
@@ -202,7 +202,7 @@ public abstract class TradeOffersProvider {
                 putTradeOffer(id, Arrays.stream(color).mapToObj(i -> item(items[i], price)).toArray(ItemContainer[]::new),
                 ItemContainer.EMPTY,
                 new ItemContainer[]{item(emeralds)},
-                maxUses, 0.05f, experienceByLevel(level),
+                maxUses, 0.05f, experienceByLevelBuy(level),
                 new VillagerData(type, profession, level)));
     }
 
@@ -212,7 +212,7 @@ public abstract class TradeOffersProvider {
                 putTradeOffer(id, new ItemContainer[]{item(emeralds)},
                 ItemContainer.EMPTY,
                 Arrays.stream(color).mapToObj(i -> item(items[i], price)).toArray(ItemContainer[]::new),
-                maxUses, 0.05f, experienceByLevel(level),
+                maxUses, 0.05f, experienceByLevelSell(level),
                 new VillagerData(type, profession, level)));
     }
 
@@ -223,7 +223,7 @@ public abstract class TradeOffersProvider {
                 putTradeOffer(id, Arrays.stream(items).map(i -> item(i, price)).toArray(ItemContainer[]::new),
                 ItemContainer.EMPTY,
                 new ItemContainer[]{item(emeralds)},
-                maxUses, 0.05f, experienceByLevel(level),
+                maxUses, 0.05f, experienceByLevelBuy(level),
                 new VillagerData(type, profession, level)));
     }
 
@@ -233,7 +233,7 @@ public abstract class TradeOffersProvider {
                 putTradeOffer(id, new ItemContainer[]{item(emeralds)},
                 ItemContainer.EMPTY,
                 Arrays.stream(items).map(i -> item(i, price)).toArray(ItemContainer[]::new),
-                maxUses, 0.05f, experienceByLevel(level),
+                maxUses, 0.05f, experienceByLevelBuy(level),
                 new VillagerData(type, profession, level)));
     }
 
@@ -300,9 +300,14 @@ public abstract class TradeOffersProvider {
         return ItemContainer.of(new ItemStack(item, count), condition);
     }
 
-    public static int experienceByLevel(int level) {
+    public static int experienceByLevelBuy(int level) {
         if (level == 0) return 1;
         return MathHelper.clamp((level - 1) * 10, 2, 50);
+    }
+
+    public static int experienceByLevelSell(int level) {
+        if (level == 0) return 1;
+        return MathHelper.clamp((level - 1) * 5, 1, 50);
     }
 
 

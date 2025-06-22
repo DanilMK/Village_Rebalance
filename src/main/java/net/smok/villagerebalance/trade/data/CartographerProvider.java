@@ -33,7 +33,7 @@ public class CartographerProvider extends TradeOffersProvider {
                 new ItemContainer[]{item(Items.EMERALD, 13)},
                 new ItemContainer[]{item(Items.COMPASS)},
                 new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(MapData.OCEAN))},
-                4, 0.05f, experienceByLevel(2), VillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
+                4, 0.05f, experienceByLevelSell(2), VillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
 
         buyForEmerald("compass", 3, 12, item(Items.COMPASS));
 
@@ -41,7 +41,7 @@ public class CartographerProvider extends TradeOffersProvider {
                 new ItemContainer[]{item(Items.EMERALD, 14)},
                 new ItemContainer[]{item(Items.COMPASS)},
                 new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(MapData.WOODLAND))},
-                4, 0.05f, experienceByLevel(2), VillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
+                4, 0.05f, experienceByLevelSell(2), VillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
 
 
         buyForEmerald("ink_sac", 4, 12, item(Items.INK_SAC, 5));
