@@ -1,12 +1,17 @@
 package net.smok.villagerebalance.trade.data;
 
+import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
+import net.smok.villagerebalance.trade.ItemContainer;
 import net.smok.villagerebalance.trade.VillagerData;
 import net.smok.villagerebalance.trade.conditions.Conditions;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
+
+import java.util.Map;
 
 public class FarmerProvider extends TradeOffersProvider {
 
@@ -77,4 +82,5 @@ public class FarmerProvider extends TradeOffersProvider {
         sellForEmerald("golden_carrot", 5, 12, 3, item(Items.GOLDEN_CARROT, 3));
         sellForEmerald("melon_slice", 5, 12, 4, item(Items.GLISTERING_MELON_SLICE, 3));
     }
+
 }

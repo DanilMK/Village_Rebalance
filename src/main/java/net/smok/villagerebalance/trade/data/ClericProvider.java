@@ -1,9 +1,17 @@
 package net.smok.villagerebalance.trade.data;
 
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.potion.Potions;
 import net.minecraft.village.VillagerProfession;
+import net.minecraft.village.VillagerType;
+import net.smok.villagerebalance.trade.ItemContainer;
+import net.smok.villagerebalance.trade.VillagerData;
+import net.smok.villagerebalance.trade.conditions.Conditions;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
+
+import java.util.Map;
 
 public class ClericProvider extends TradeOffersProvider {
 
@@ -32,4 +40,5 @@ public class ClericProvider extends TradeOffersProvider {
 
 
     }
+
 }

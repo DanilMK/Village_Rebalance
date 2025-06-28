@@ -6,6 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
+import net.smok.villagerebalance.trade.ItemContainer;
+import net.smok.villagerebalance.trade.VillagerData;
+import net.smok.villagerebalance.trade.conditions.Conditions;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
 import java.util.Map;
@@ -24,47 +27,51 @@ public class ArmorerProvider extends TradeOffersProvider {
         buyForEmerald("lava_bucket", 3, 12, item(Items.LAVA_BUCKET, 1));
         buyForEmerald("diamond", 4, 12, item(Items.DIAMOND, 1));
 
-        sellDistributeForBiomes(12, 3, new Item[]{Items.CHAINMAIL_BOOTS, Items.IRON_BOOTS, Items.IRON_BOOTS, Items.DIAMOND_BOOTS},
+        sellDistributeForBiomes(3, new Item[]{Items.CHAINMAIL_BOOTS, Items.IRON_BOOTS, Items.IRON_BOOTS, Items.DIAMOND_BOOTS},
                 Map.of(
                         VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
                         VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
                         VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
                         VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
                         VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
-                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER}
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER},
+                        VillagerType.SNOW, new Enchantment[]{Enchantments.BLAST_PROTECTION, Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER}
                 )
         );
 
-        sellDistributeForBiomes(12, 5, new Item[]{Items.CHAINMAIL_LEGGINGS, Items.IRON_LEGGINGS, Items.IRON_LEGGINGS, Items.DIAMOND_LEGGINGS},
+        sellDistributeForBiomes(5, new Item[]{Items.CHAINMAIL_LEGGINGS, Items.IRON_LEGGINGS, Items.IRON_LEGGINGS, Items.DIAMOND_LEGGINGS},
                 Map.of(
                         VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION},
                         VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
                         VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
                         VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION},
                         VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS},
-                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS}
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS},
+                        VillagerType.SNOW, new Enchantment[]{Enchantments.BLAST_PROTECTION}
                 )
         );
 
-        sellDistributeForBiomes(12, 6, new Item[]{Items.CHAINMAIL_CHESTPLATE, Items.IRON_CHESTPLATE, Items.IRON_CHESTPLATE, Items.DIAMOND_CHESTPLATE},
+        sellDistributeForBiomes(6, new Item[]{Items.CHAINMAIL_CHESTPLATE, Items.IRON_CHESTPLATE, Items.IRON_CHESTPLATE, Items.DIAMOND_CHESTPLATE},
                 Map.of(
                         VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION},
                         VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
                         VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION},
                         VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION},
                         VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS},
-                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS}
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS},
+                        VillagerType.SNOW, new Enchantment[]{Enchantments.BLAST_PROTECTION}
                 )
         );
 
-        sellDistributeForBiomes(12, 3, new Item[]{Items.CHAINMAIL_HELMET, Items.IRON_HELMET, Items.IRON_HELMET, Items.DIAMOND_HELMET},
+        sellDistributeForBiomes(3, new Item[]{Items.CHAINMAIL_HELMET, Items.IRON_HELMET, Items.IRON_HELMET, Items.DIAMOND_HELMET},
                 Map.of(
                         VillagerType.PLAINS, new Enchantment[]{Enchantments.PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
                         VillagerType.JUNGLE, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
                         VillagerType.TAIGA, new Enchantment[]{Enchantments.PROJECTILE_PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
                         VillagerType.SAVANNA, new Enchantment[]{Enchantments.FIRE_PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
                         VillagerType.DESERT, new Enchantment[]{Enchantments.THORNS, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
-                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY}
+                        VillagerType.SWAMP, new Enchantment[]{Enchantments.THORNS, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY},
+                        VillagerType.SNOW, new Enchantment[]{Enchantments.BLAST_PROTECTION, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY}
                 )
         );
 
@@ -73,5 +80,20 @@ public class ArmorerProvider extends TradeOffersProvider {
                 Enchantments.FIRE_PROTECTION, Enchantments.THORNS, Enchantments.RESPIRATION, Enchantments.AQUA_AFFINITY,
                 Enchantments.FEATHER_FALLING, Enchantments.DEPTH_STRIDER, Enchantments.FROST_WALKER
         );
+    }
+
+    protected void sellDistributeForBiomes(int emeralds, Item[] items, Map<VillagerType, Enchantment[]> enchantmentsForBiome) {
+        for (int i = 1; i < items.length + 1; i++) {
+            for (Map.Entry<VillagerType, Enchantment[]> entry : enchantmentsForBiome.entrySet()) {
+                Item item = items[i-1];
+                String id = item.toString() + "_" + i;
+                ItemContainer[] container = new ItemContainer[]{item(item, ItemFunctions.ofProgression(entry.getValue()))};
+                VillagerData data = new VillagerData(entry.getKey(), profession, i);
+                if (i == 1) putTradeOffer(id, new ItemContainer[]{item(emeralds)}, ItemContainer.EMPTY, container, 12,
+                        0.05f, experienceByLevelSell(i), data);
+                else putTradeOffer(id, new ItemContainer[]{item(i * emeralds)}, ItemContainer.EMPTY, container, 12,
+                        0.05f, experienceByLevelSell(i), data, Conditions.ofSell(items[0]));
+            }
+        }
     }
 }

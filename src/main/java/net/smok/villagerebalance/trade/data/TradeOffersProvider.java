@@ -110,30 +110,6 @@ public abstract class TradeOffersProvider {
     public abstract void fill();
 
 
-
-
-
-
-
-
-
-    protected void sellDistributeForBiomes(int maxUses, int emeralds, Item[] items, Map<VillagerType, Enchantment[]> enchantmentsForBiome) {
-        for (int i = 1; i < items.length + 1; i++) {
-            for (Map.Entry<VillagerType, Enchantment[]> entry : enchantmentsForBiome.entrySet()) {
-                Item item = items[i-1];
-                String id = item.toString() + "_" + i;
-                ItemContainer[] container = new ItemContainer[]{item(item, ItemFunctions.ofProgression(entry.getValue()))};
-                VillagerData data = new VillagerData(entry.getKey(), profession, i);
-                if (i == 1) putTradeOffer(id, new ItemContainer[]{item(emeralds)}, ItemContainer.EMPTY, container, maxUses,
-                        0.05f, experienceByLevelSell(i), data);
-                else putTradeOffer(id, new ItemContainer[]{item(i * emeralds)}, ItemContainer.EMPTY, container, maxUses,
-                        0.05f, experienceByLevelSell(i), data, Conditions.ofSell(items[0]));
-            }
-        }
-    }
-
-
-
     protected void sellBook(String id, int level, Enchantment... enchantments) {
         sellBook(id, null, level, enchantments);
     }
@@ -141,7 +117,7 @@ public abstract class TradeOffersProvider {
     protected void sellBook(String id, VillagerType type, int level, Enchantment... enchantments) {
         VillagerData data = new VillagerData(type, profession, level);
         putTradeOffer(id,
-                new ItemContainer[]{item(1)},
+                new ItemContainer[]{item(1)}, // todo add price
                 new ItemContainer[]{ItemContainer.of(new ItemStack(Items.BOOK))},
                 new ItemContainer[]{ItemContainer.of(new ItemStack(Items.ENCHANTED_BOOK), ItemFunctions.ofProgression(enchantments))},
                 12, 0.05f, experienceByLevelSell(level), data);
