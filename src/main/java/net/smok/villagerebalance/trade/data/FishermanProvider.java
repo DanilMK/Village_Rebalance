@@ -4,12 +4,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
-import net.smok.villagerebalance.trade.ItemContainer;
 import net.smok.villagerebalance.trade.conditions.Conditions;
 import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
-
-import java.util.Map;
 
 public class FishermanProvider extends TradeOffersProvider {
 

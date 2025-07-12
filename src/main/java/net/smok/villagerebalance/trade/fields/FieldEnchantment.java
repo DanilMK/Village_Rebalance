@@ -23,7 +23,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public record FieldEnchantment(boolean useSameEnchant, boolean useVillagerLevel, int fixedLevel, List<Enchantment> enchantments) implements JsonConvertible<FieldEnchantment> {
 
