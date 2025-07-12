@@ -1,0 +1,22 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "count": 3,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 4,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "ordinary",
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "id": "minecraft:tropical_fish_bucket"
+    },
+    {
+      "id": "minecraft:pufferfish_bucket"
+    }
+  ]
+}

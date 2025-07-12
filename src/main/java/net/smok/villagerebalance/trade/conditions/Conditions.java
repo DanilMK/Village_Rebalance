@@ -161,6 +161,27 @@ public final class Conditions {
         }
     });
 
+
+    public static final Condition<Boolean> WANDERING_TRADER_CONDITION = register("wandering_trader_condition", new Condition<Boolean>() {
+
+        @Override
+        public boolean match(MerchantEntity entity, Boolean data) {
+            return entity instanceof MerchantEntity;
+        }
+
+        @Override
+        public void toJson(JsonObject json, Boolean data) {
+
+        }
+
+        @Override
+        public Boolean fromJson(JsonObject json) {
+            return true;
+        }
+    });
+
+    public static final Condition.Data<?> WANDERING_TRADER = of(WANDERING_TRADER_CONDITION, true);
+
     private static void convertArray(JsonObject json, Condition.Data<?>[] data) {
         JsonArray array = new JsonArray(data.length);
         for (Condition.Data<?> entry : data) array.add(entry.toJson());

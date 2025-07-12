@@ -1,0 +1,28 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "count": 5,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 1,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "ordinary",
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "count": 2,
+      "id": "minecraft:pointed_dripstone"
+    },
+    {
+      "count": 2,
+      "id": "minecraft:rooted_dirt"
+    },
+    {
+      "count": 2,
+      "id": "minecraft:moss_block"
+    }
+  ]
+}

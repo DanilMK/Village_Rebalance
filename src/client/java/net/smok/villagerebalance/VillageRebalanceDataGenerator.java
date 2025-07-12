@@ -47,6 +47,13 @@ public class VillageRebalanceDataGenerator implements DataGeneratorEntrypoint {
 				}
 			}
 
+			WanderingTraderProvider wanderingTraderProvider = new WanderingTraderProvider();
+			wanderingTraderProvider.fill();
+			for (Map.Entry<Identifier, OfferFactory> entry : wanderingTraderProvider.getObjects().entrySet()) {
+				futures.add(DataProvider.writeToPath(writer, entry.getValue().toJson(), pathResolver.resolveJson(entry.getKey())));
+			}
+
+
 			return CompletableFuture.allOf(futures.toArray(CompletableFuture[]::new));
 		}
 

@@ -1,0 +1,40 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "count": 5,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 8,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "ordinary",
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "id": "minecraft:oak_sapling"
+    },
+    {
+      "id": "minecraft:spruce_sapling"
+    },
+    {
+      "id": "minecraft:birch_sapling"
+    },
+    {
+      "id": "minecraft:jungle_sapling"
+    },
+    {
+      "id": "minecraft:acacia_sapling"
+    },
+    {
+      "id": "minecraft:dark_oak_sapling"
+    },
+    {
+      "id": "minecraft:mangrove_propagule"
+    },
+    {
+      "id": "minecraft:cherry_sapling"
+    }
+  ]
+}

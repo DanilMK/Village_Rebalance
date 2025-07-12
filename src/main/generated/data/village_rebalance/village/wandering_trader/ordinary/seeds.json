@@ -1,0 +1,27 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 12,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "ordinary",
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "id": "minecraft:wheat_seeds"
+    },
+    {
+      "id": "minecraft:beetroot_seeds"
+    },
+    {
+      "id": "minecraft:pumpkin_seeds"
+    },
+    {
+      "id": "minecraft:melon_seeds"
+    }
+  ]
+}

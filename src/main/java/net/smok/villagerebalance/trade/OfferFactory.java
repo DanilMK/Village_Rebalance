@@ -16,6 +16,7 @@ import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
 import net.smok.villagerebalance.trade.conditions.Condition;
 import net.smok.villagerebalance.utility.JsonConvertible;
+import net.smok.villagerebalance.VRTradeOffer;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, ItemContainer[] sell, int maxUses,
-                           boolean rewardPlayer, float priceMultiplier, int experience, Condition.Data<?> condition)
+                           boolean rewardPlayer, float priceMultiplier, int experience, String rarity, Condition.Data<?> condition)
         implements TradeOffers.Factory, JsonConvertible<OfferFactory> {
 
     private static final String KEY_FIRST_BUY = "first_buy";
@@ -47,7 +48,11 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
         this(new ItemContainer[]{ItemContainer.of(firstBuy)},
                 new ItemContainer[]{ItemContainer.of(secondBuy)},
                 new ItemContainer[]{ItemContainer.of(sell)},
-                maxUses, rewardPlayer, priceMultiplier, experience, condition);
+                maxUses, rewardPlayer, priceMultiplier, experience, "", condition);
+    }
+
+    public OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, ItemContainer[] sell, int maxUses, boolean rewardPlayer, float priceMultiplier, int experience, Condition.Data<?> condition) {
+        this(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, "", condition);
     }
 
     public @NotNull OfferFactory childFromJson(@NotNull JsonObject json) {
@@ -60,9 +65,10 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
         boolean rewardPlayer = JsonHelper.getBoolean(json, KEY_REWARD_PLAYER, this.rewardPlayer);
         float priceMultiplier = MathHelper.clamp(JsonHelper.getFloat(json, KEY_PRICE_MULTIPLIER, this.priceMultiplier), 0, 1);
         int experience = MathHelper.clamp(JsonHelper.getInt(json, KEY_EXPERIENCE, this.experience), 0, 256);
+        String rarity = JsonHelper.getString(json, "rarity", rarity());
         Condition.Data<?> offerCondition = Condition.getFromJson(json.getAsJsonObject(KEY_CONDITION));
 
-        return new OfferFactory(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, offerCondition);
+        return new OfferFactory(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, rarity, offerCondition);
     }
 
 
@@ -72,6 +78,7 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
         result.addProperty(KEY_MAX_USES, this.maxUses());
         result.addProperty(KEY_PRICE_MULTIPLIER, this.priceMultiplier());
         result.addProperty(KEY_REWARD_PLAYER, this.rewardPlayer());
+        if (!rarity.isEmpty()) result.addProperty("rarity", rarity);
         ItemContainer.toJson(result, KEY_FIRST_BUY, firstBuy);
         ItemContainer.toJson(result, KEY_SECOND_BUY, secondBuy);
         ItemContainer.toJson(result, KEY_SELL, sell);
@@ -122,10 +129,12 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
 
     @Override
     public @NotNull TradeOffer create(Entity entity, Random random) {
-        return new TradeOffer(
+        TradeOffer tradeOffer = new TradeOffer(
                 randomContainer(firstBuy, (MerchantEntity) entity),
                 randomContainer(secondBuy, (MerchantEntity) entity),
                 randomContainer(sell, (MerchantEntity) entity), maxUses, experience, priceMultiplier);
+        ((VRTradeOffer)tradeOffer).vRFabric$setRarity(rarity);
+        return tradeOffer;
     }
 
     private static ItemStack randomContainer(ItemContainer[] containers, MerchantEntity entity) {
@@ -148,6 +157,7 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
                 ", priceMultiplier=" + priceMultiplier +
                 ", experience=" + experience +
                 ", condition=" + condition +
+                ", rarity=" + rarity +
                 '}';
     }
 

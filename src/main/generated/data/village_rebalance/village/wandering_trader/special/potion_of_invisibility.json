@@ -1,0 +1,25 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "count": 5,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 1,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "special",
+  "rewarding_player_experience": true,
+  "sell": {
+    "functions": [
+      {
+        "function_type": "village_rebalance:potion",
+        "value": "minecraft:invisibility"
+      }
+    ],
+    "item": {
+      "id": "minecraft:potion"
+    }
+  }
+}

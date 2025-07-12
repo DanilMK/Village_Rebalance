@@ -1,0 +1,17 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "id": "minecraft:water_bucket"
+  },
+  "max_uses": 2,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "purchasing",
+  "rewarding_player_experience": true,
+  "sell": {
+    "count": 2,
+    "id": "minecraft:emerald"
+  }
+}

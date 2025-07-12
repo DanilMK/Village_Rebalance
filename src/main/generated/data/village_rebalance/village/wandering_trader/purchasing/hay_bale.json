@@ -1,0 +1,16 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "id": "minecraft:hay_block"
+  },
+  "max_uses": 2,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "purchasing",
+  "rewarding_player_experience": true,
+  "sell": {
+    "id": "minecraft:emerald"
+  }
+}

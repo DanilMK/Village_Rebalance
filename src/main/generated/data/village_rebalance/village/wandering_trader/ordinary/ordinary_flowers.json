@@ -1,0 +1,45 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 12,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "ordinary",
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "id": "minecraft:dandelion"
+    },
+    {
+      "id": "minecraft:poppy"
+    },
+    {
+      "id": "minecraft:allium"
+    },
+    {
+      "id": "minecraft:azure_bluet"
+    },
+    {
+      "id": "minecraft:red_tulip"
+    },
+    {
+      "id": "minecraft:orange_tulip"
+    },
+    {
+      "id": "minecraft:white_tulip"
+    },
+    {
+      "id": "minecraft:pink_tulip"
+    },
+    {
+      "id": "minecraft:oxeye_daisy"
+    },
+    {
+      "id": "minecraft:cornflower"
+    }
+  ]
+}

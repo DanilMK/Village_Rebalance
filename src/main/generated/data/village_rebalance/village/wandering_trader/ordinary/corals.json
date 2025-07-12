@@ -1,0 +1,31 @@
+{
+  "condition": {
+    "condition_type": "village_rebalance:wandering_trader_condition"
+  },
+  "first_buy": {
+    "count": 3,
+    "id": "minecraft:emerald"
+  },
+  "max_uses": 8,
+  "merchant_experience": 1,
+  "price_multiplier": 0.05,
+  "rarity": "ordinary",
+  "rewarding_player_experience": true,
+  "sell": [
+    {
+      "id": "minecraft:brain_coral_block"
+    },
+    {
+      "id": "minecraft:bubble_coral_block"
+    },
+    {
+      "id": "minecraft:fire_coral_block"
+    },
+    {
+      "id": "minecraft:horn_coral_block"
+    },
+    {
+      "id": "minecraft:tube_coral_block"
+    }
+  ]
+}
