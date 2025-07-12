@@ -5,6 +5,7 @@ import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.trade.ItemContainer;
+import net.smok.villagerebalance.trade.conditions.OfferCondition;
 import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.conditions.Conditions;
 
@@ -59,7 +60,7 @@ public class MasonProvider extends TradeOffersProvider {
         sellForEmerald("dripstone_block", 3, 16,
                 item(Items.DRIPSTONE_BLOCK, 4));
 
-        buyDistributeForBiomes("dyes", 3, 1, 12, 16, DYES, Map.of(
+        buyDistributeForBiomes("dyes", 3, 1, 12, 16, DYES, TERRACOTTA, OfferCondition.SearchType.SELL, Map.of(
                 VillagerType.DESERT, new int[] {ORANGE, BLUE},
                 VillagerType.JUNGLE, new int[] {LIME, GREEN, CYAN, LIGHT_BLUE},
                 VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
@@ -69,7 +70,7 @@ public class MasonProvider extends TradeOffersProvider {
                 VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
         ));
 
-        sellDistributeForBiomes("terracotta", 3, 1, 12, 16, TERRACOTTA, Map.of(
+        sellDistributeForBiomes("terracotta", 3, 1, 12, 16, TERRACOTTA, DYES, OfferCondition.SearchType.BUY, Map.of(
                 VillagerType.DESERT, new int[] {ORANGE, BLUE},
                 VillagerType.JUNGLE, new int[] {LIME, GREEN, CYAN, LIGHT_BLUE},
                 VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
@@ -79,7 +80,7 @@ public class MasonProvider extends TradeOffersProvider {
                 VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
         ));
 
-        sellDistributeForBiomes("glazed_terracotta", 4, 1, 12, 16, GLAZED_TERRACOTTA, Map.of(
+        sellDistributeForBiomes("glazed_terracotta", 4, 1, 12, 16, GLAZED_TERRACOTTA, DYES, OfferCondition.SearchType.BUY, Map.of(
                 VillagerType.DESERT, new int[] {ORANGE, BLUE},
                 VillagerType.JUNGLE, new int[] {LIME, GREEN, CYAN, LIGHT_BLUE},
                 VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},

@@ -7,12 +7,26 @@
   },
   "first_buy": [
     {
-      "count": 12,
-      "id": "minecraft:orange_dye"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:orange_terracotta",
+        "search_type": "sell"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:orange_dye"
+      }
     },
     {
-      "count": 12,
-      "id": "minecraft:blue_dye"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:blue_terracotta",
+        "search_type": "sell"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:blue_dye"
+      }
     }
   ],
   "max_uses": 16,

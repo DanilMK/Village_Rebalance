@@ -7,20 +7,48 @@
   },
   "first_buy": [
     {
-      "count": 12,
-      "id": "minecraft:black_dye"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:black_terracotta",
+        "search_type": "sell"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:black_dye"
+      }
     },
     {
-      "count": 12,
-      "id": "minecraft:brown_dye"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:brown_terracotta",
+        "search_type": "sell"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:brown_dye"
+      }
     },
     {
-      "count": 12,
-      "id": "minecraft:light_blue_dye"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:light_blue_terracotta",
+        "search_type": "sell"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:light_blue_dye"
+      }
     },
     {
-      "count": 12,
-      "id": "minecraft:purple_dye"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:purple_terracotta",
+        "search_type": "sell"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:purple_dye"
+      }
     }
   ],
   "max_uses": 16,

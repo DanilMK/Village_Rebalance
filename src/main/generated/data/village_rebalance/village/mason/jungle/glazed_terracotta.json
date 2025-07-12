@@ -14,20 +14,48 @@
   "rewarding_player_experience": true,
   "sell": [
     {
-      "count": 12,
-      "id": "minecraft:lime_glazed_terracotta"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:lime_dye",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:lime_glazed_terracotta"
+      }
     },
     {
-      "count": 12,
-      "id": "minecraft:green_glazed_terracotta"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:green_dye",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:green_glazed_terracotta"
+      }
     },
     {
-      "count": 12,
-      "id": "minecraft:cyan_glazed_terracotta"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:cyan_dye",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:cyan_glazed_terracotta"
+      }
     },
     {
-      "count": 12,
-      "id": "minecraft:light_blue_glazed_terracotta"
+      "condition": {
+        "condition_type": "village_rebalance:offer_item",
+        "item": "minecraft:light_blue_dye",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 12,
+        "id": "minecraft:light_blue_glazed_terracotta"
+      }
     }
   ]
 }
