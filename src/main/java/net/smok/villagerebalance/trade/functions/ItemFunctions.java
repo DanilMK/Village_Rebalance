@@ -60,8 +60,19 @@ public final class ItemFunctions {
     public static final ItemFunction<FieldEnchantment> ENCHANT = register("enchantment", new ItemFunction<>(
             new FieldEnchantment(false, false, 0, List.of(Enchantments.UNBREAKING)),
             (itemStack, entity, fieldEnchantment) -> {
-                Enchantment enchantment = fieldEnchantment.useSameEnchant() ? foreachOffer(entity, fieldEnchantment::getSame).orElse(fieldEnchantment.getRandom(entity.getRandom())) : fieldEnchantment.getRandom(entity.getRandom());
+                Enchantment enchantment;
+                if (fieldEnchantment.useSameEnchant())
+                {
+                    // For each enchantment in the function, check if the item has this enchantment
+                    List<Enchantment> list = fieldEnchantment.enchantments().stream().filter(enchantment1 -> entity.getOffers().stream()
+                            .anyMatch(tradeOffer -> fieldEnchantment.getSame(tradeOffer.getSellItem()) == enchantment1)).toList();
+
+                    if (!list.isEmpty()) enchantment = list.get(entity.getRandom().nextInt(list.size()));
+                    else enchantment = fieldEnchantment.getRandom(entity.getRandom());
+                }
+                else enchantment = fieldEnchantment.getRandom(entity.getRandom());
                 int level = fieldEnchantment.getLevel(enchantment, entity);
+
 
                 if (itemStack.getItem() instanceof EnchantedBookItem) {
                     NbtCompound nbt = itemStack.getOrCreateNbt();

@@ -182,6 +182,19 @@ public abstract class TradeOffersProvider {
                 new FieldVillagerData(type, profession, level)));
     }
 
+    protected void buyDistributeForBiomes(String id, int level, int emeralds, int price,
+                                          int maxUses, Item[] items, Item[] conditionItems, OfferCondition.SearchType searchType, Map<VillagerType, int[]> typeMap) {
+
+        typeMap.forEach((type, color) ->
+                putTradeOffer(id, Arrays.stream(color).mapToObj(i -> item(items[i], price,
+                                Conditions.of(Conditions.ITEM_OFFER_CONDITION, new OfferCondition.Searchable<>(searchType, conditionItems[i]))
+                        )).toArray(ItemContainer[]::new),
+                ItemContainer.EMPTY,
+                new ItemContainer[]{item(emeralds)},
+                maxUses, 0.05f, experienceByLevelBuy(level),
+                new FieldVillagerData(type, profession, level)));
+    }
+
     protected void sellDistributeForBiomes(String id, int level, int emeralds, int price,
                                          int maxUses, Item[] items, Map<VillagerType, int[]> typeMap) {
         typeMap.forEach((type, color) ->
@@ -190,6 +203,19 @@ public abstract class TradeOffersProvider {
                 Arrays.stream(color).mapToObj(i -> item(items[i], price)).toArray(ItemContainer[]::new),
                 maxUses, 0.05f, experienceByLevelSell(level),
                 new FieldVillagerData(type, profession, level)));
+    }
+
+    protected void sellDistributeForBiomes(String id, int level, int emeralds, int price,
+                                           int maxUses, Item[] items, Item[] conditionItems, OfferCondition.SearchType searchType, Map<VillagerType, int[]> typeMap) {
+        typeMap.forEach((type, color) ->
+                putTradeOffer(id, new ItemContainer[]{item(emeralds)},
+                ItemContainer.EMPTY,
+                Arrays.stream(color).mapToObj(i -> item(items[i], price,
+                        Conditions.of(Conditions.ITEM_OFFER_CONDITION, new OfferCondition.Searchable<>(searchType, conditionItems[i]))))
+                        .toArray(ItemContainer[]::new),
+                maxUses, 0.05f, experienceByLevelSell(level),
+                new FieldVillagerData(type, profession, level))
+        );
     }
 
     protected void buyDistributeForBiomes(String id, int level, int emeralds, int price,

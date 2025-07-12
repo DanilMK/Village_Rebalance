@@ -41,7 +41,7 @@ public record FieldEnchantment(boolean useSameEnchant, boolean useVillagerLevel,
     }
 
 
-    public Optional<Enchantment> getSame(@NotNull ItemStack itemStack) {
+    public Enchantment getSame(@NotNull ItemStack itemStack) {
         NbtCompound nbt = itemStack.getNbt();
 
         if (nbt != null) {
@@ -55,11 +55,11 @@ public record FieldEnchantment(boolean useSameEnchant, boolean useVillagerLevel,
                 if (enchantCompound != null && enchantCompound.getString("id") != null) {
                     Enchantment enchantment = Registries.ENCHANTMENT.get(new Identifier(enchantCompound.getString("id")));
 
-                    if (enchantments.contains(enchantment)) return Optional.ofNullable(enchantment);
+                    if (enchantments.contains(enchantment)) return enchantment;
                 }
             }
         }
-        return Optional.empty();
+        return null;
     }
 
     @NotNull
