@@ -4,6 +4,9 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
+import net.smok.villagerebalance.trade.ItemContainer;
+import net.smok.villagerebalance.trade.conditions.Conditions;
+import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
 import java.util.Map;
@@ -33,15 +36,17 @@ public class FishermanProvider extends TradeOffersProvider {
 
         buyForEmerald("pufferfish", 5, 12, item(Items.PUFFERFISH, 4));
 
-        sellDistributeForBiomes("boats", 5, 1, 1, 12, BOATS, Map.of(
-                VillagerType.SWAMP, new int[] {DARK_OAK},
-                VillagerType.SAVANNA, new int[] {ACACIA},
-                VillagerType.JUNGLE, new int[] {JUNGLE},
-                VillagerType.DESERT, new int[] {JUNGLE},
-                VillagerType.SNOW, new int[] {SPRUCE},
-                VillagerType.TAIGA, new int[] {SPRUCE},
-                VillagerType.PLAINS, new int[] {OAK, BIRCH}
-        ));
+
+        sellForEmerald("boats", 5, 12, 1,
+                item(BOATS[DARK_OAK], Conditions.of(FieldVillagerData.of(VillagerType.SWAMP))),
+                item(BOATS[ACACIA], Conditions.of(FieldVillagerData.of(VillagerType.SAVANNA))),
+                item(BOATS[JUNGLE], Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
+                item(BOATS[DARK_OAK], Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
+                item(BOATS[SPRUCE], Conditions.of(FieldVillagerData.of(VillagerType.SNOW))),
+                item(BOATS[SPRUCE], Conditions.of(FieldVillagerData.of(VillagerType.TAIGA))),
+                item(BOATS[OAK], Conditions.of(FieldVillagerData.of(VillagerType.PLAINS))),
+                item(BOATS[BIRCH], Conditions.of(FieldVillagerData.of(VillagerType.PLAINS)))
+        );
 
 
 
