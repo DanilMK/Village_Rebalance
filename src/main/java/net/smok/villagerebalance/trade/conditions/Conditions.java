@@ -47,20 +47,12 @@ public final class Conditions {
 
         @Override
         public void toJson(JsonObject json, VillagerData data) {
-            if (data.type() != null) json.addProperty("villager_type", Registries.VILLAGER_TYPE.getId(data.type()).toString());
-            if (data.profession() != null)
-                json.addProperty("villager_profession", Registries.VILLAGER_PROFESSION.getId(data.profession()).toString());
-            if (data.level() != 0) json.addProperty("villager_level", data.level());
+            data.toJson(json);
         }
 
         @Override
         public VillagerData fromJson(JsonObject json) {
-
-            VillagerType type = JsonConvertible.getRegister(json, "villager_type", Registries.VILLAGER_TYPE, null);
-            VillagerProfession profession = JsonConvertible.getRegister(json, "villager_profession", Registries.VILLAGER_PROFESSION, null);
-            int level = JsonHelper.getInt(json, "villager_level", 0);
-
-            return new VillagerData(type, profession, level);
+            return VillagerData.EMPTY.childFromJson(json);
         }
     });
 
