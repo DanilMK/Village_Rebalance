@@ -1,15 +1,12 @@
 package net.smok.villagerebalance.trade.data;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.trade.ItemContainer;
-import net.smok.villagerebalance.trade.VillagerData;
+import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.conditions.Conditions;
-import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
 import java.util.Map;
 
@@ -37,23 +34,23 @@ public class MasonProvider extends TradeOffersProvider {
                 item(Items.POLISHED_ANDESITE, 4, Items.POLISHED_DIORITE, 4, Items.POLISHED_GRANITE, 4));
 
         buyForEmerald("any_stones", 2, 16,
-                ItemContainer.of(new ItemStack(Items.SANDSTONE, 20), Conditions.of(VillagerData.of(VillagerType.DESERT))),
-                ItemContainer.of(new ItemStack(Items.MOSSY_COBBLESTONE, 20), Conditions.of(VillagerData.of(VillagerType.JUNGLE))),
-                ItemContainer.of(new ItemStack(Items.STONE, 20), Conditions.of(VillagerData.of(VillagerType.PLAINS))),
-                ItemContainer.of(new ItemStack(Items.RED_SANDSTONE, 20), Conditions.of(VillagerData.of(VillagerType.SAVANNA))),
-                ItemContainer.of(new ItemStack(Items.DEEPSLATE, 20), Conditions.of(VillagerData.of(VillagerType.SNOW))),
-                ItemContainer.of(new ItemStack(Items.MUD, 20), Conditions.of(VillagerData.of(VillagerType.SWAMP))),
-                ItemContainer.of(new ItemStack(Items.TUFF, 20), Conditions.of(VillagerData.of(VillagerType.TAIGA)))
+                ItemContainer.of(new ItemStack(Items.SANDSTONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.DESERT))),
+                ItemContainer.of(new ItemStack(Items.MOSSY_COBBLESTONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
+                ItemContainer.of(new ItemStack(Items.STONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.PLAINS))),
+                ItemContainer.of(new ItemStack(Items.RED_SANDSTONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.SAVANNA))),
+                ItemContainer.of(new ItemStack(Items.DEEPSLATE, 20), Conditions.of(FieldVillagerData.of(VillagerType.SNOW))),
+                ItemContainer.of(new ItemStack(Items.MUD, 20), Conditions.of(FieldVillagerData.of(VillagerType.SWAMP))),
+                ItemContainer.of(new ItemStack(Items.TUFF, 20), Conditions.of(FieldVillagerData.of(VillagerType.TAIGA)))
         );
 
         sellForEmerald("any_bricks", 2, 16,
-                ItemContainer.of(new ItemStack(Items.CUT_SANDSTONE, 4), Conditions.of(VillagerData.of(VillagerType.DESERT))),
-                ItemContainer.of(new ItemStack(Items.MOSSY_STONE_BRICKS, 4), Conditions.of(VillagerData.of(VillagerType.JUNGLE))),
-                ItemContainer.of(new ItemStack(Items.STONE_BRICKS, 4), Conditions.of(VillagerData.of(VillagerType.PLAINS))),
-                ItemContainer.of(new ItemStack(Items.CUT_RED_SANDSTONE, 4), Conditions.of(VillagerData.of(VillagerType.SAVANNA))),
-                ItemContainer.of(new ItemStack(Items.DEEPSLATE_BRICKS, 4), Conditions.of(VillagerData.of(VillagerType.SNOW))),
-                ItemContainer.of(new ItemStack(Items.MUD_BRICKS, 4), Conditions.of(VillagerData.of(VillagerType.SWAMP))),
-                ItemContainer.of(new ItemStack(Items.STONE_BRICKS, 4), Conditions.of(VillagerData.of(VillagerType.TAIGA)))
+                ItemContainer.of(new ItemStack(Items.CUT_SANDSTONE, 4), Conditions.of(FieldVillagerData.of(VillagerType.DESERT))),
+                ItemContainer.of(new ItemStack(Items.MOSSY_STONE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
+                ItemContainer.of(new ItemStack(Items.STONE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.PLAINS))),
+                ItemContainer.of(new ItemStack(Items.CUT_RED_SANDSTONE, 4), Conditions.of(FieldVillagerData.of(VillagerType.SAVANNA))),
+                ItemContainer.of(new ItemStack(Items.DEEPSLATE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.SNOW))),
+                ItemContainer.of(new ItemStack(Items.MUD_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.SWAMP))),
+                ItemContainer.of(new ItemStack(Items.STONE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.TAIGA)))
         );
 
         buyForEmerald("dripstone", 3, 16,

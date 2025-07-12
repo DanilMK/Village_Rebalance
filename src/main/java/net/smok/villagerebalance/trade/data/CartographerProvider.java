@@ -1,15 +1,12 @@
 package net.smok.villagerebalance.trade.data;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.trade.ItemContainer;
-import net.smok.villagerebalance.trade.VillagerData;
-import net.smok.villagerebalance.trade.conditions.Conditions;
+import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
-import net.smok.villagerebalance.utility.MapData;
+import net.smok.villagerebalance.trade.fields.FieldMap;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -35,16 +32,16 @@ public class CartographerProvider extends TradeOffersProvider {
         putTradeOffer("ocean_explorer_map",
                 new ItemContainer[]{item(Items.EMERALD, 13)},
                 new ItemContainer[]{item(Items.COMPASS)},
-                new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(MapData.OCEAN))},
-                4, 0.05f, experienceByLevelSell(2), VillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
+                new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(FieldMap.OCEAN))},
+                4, 0.05f, experienceByLevelSell(2), FieldVillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
 
         buyForEmerald("compass", 3, 12, item(Items.COMPASS));
 
         putTradeOffer("woodland_explorer_map",
                 new ItemContainer[]{item(Items.EMERALD, 14)},
                 new ItemContainer[]{item(Items.COMPASS)},
-                new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(MapData.WOODLAND))},
-                4, 0.05f, experienceByLevelSell(2), VillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
+                new ItemContainer[]{item(Items.FILLED_MAP, ItemFunctions.of(FieldMap.WOODLAND))},
+                4, 0.05f, experienceByLevelSell(2), FieldVillagerData.of(null, VillagerProfession.CARTOGRAPHER, 2));
 
 
         buyForEmerald("ink_sac", 4, 12, item(Items.INK_SAC, 5));

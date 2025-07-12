@@ -7,7 +7,7 @@ import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.trade.ItemContainer;
-import net.smok.villagerebalance.trade.VillagerData;
+import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.conditions.Conditions;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
@@ -88,7 +88,7 @@ public class ArmorerProvider extends TradeOffersProvider {
                 Item item = items[i-1];
                 String id = item.toString() + "_" + i;
                 ItemContainer[] container = new ItemContainer[]{item(item, ItemFunctions.ofProgression(entry.getValue()))};
-                VillagerData data = new VillagerData(entry.getKey(), profession, i);
+                FieldVillagerData data = new FieldVillagerData(entry.getKey(), profession, i);
                 if (i == 1) putTradeOffer(id, new ItemContainer[]{item(emeralds)}, ItemContainer.EMPTY, container, 12,
                         0.05f, experienceByLevelSell(i), data);
                 else putTradeOffer(id, new ItemContainer[]{item(i * emeralds)}, ItemContainer.EMPTY, container, 12,

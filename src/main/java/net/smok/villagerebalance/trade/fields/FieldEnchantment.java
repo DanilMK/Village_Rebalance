@@ -1,4 +1,4 @@
-package net.smok.villagerebalance.trade;
+package net.smok.villagerebalance.trade.fields;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -25,11 +25,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public record EnchantData(boolean useSameEnchant, boolean useVillagerLevel, int fixedLevel, List<Enchantment> enchantments) implements JsonConvertible<EnchantData> {
+public record FieldEnchantment(boolean useSameEnchant, boolean useVillagerLevel, int fixedLevel, List<Enchantment> enchantments) implements JsonConvertible<FieldEnchantment> {
 
     @Contract("_, _, _, _ -> new")
-    public static @NotNull EnchantData of(boolean useSameEnchant, boolean useVillagerLevel, int fixedLevel, Enchantment... enchantments) {
-        return new EnchantData(useSameEnchant, useVillagerLevel, fixedLevel, List.of(enchantments));
+    public static @NotNull FieldEnchantment of(boolean useSameEnchant, boolean useVillagerLevel, int fixedLevel, Enchantment... enchantments) {
+        return new FieldEnchantment(useSameEnchant, useVillagerLevel, fixedLevel, List.of(enchantments));
     }
 
     public int getLevel(Enchantment enchantment, MerchantEntity entity) {
@@ -68,7 +68,7 @@ public record EnchantData(boolean useSameEnchant, boolean useVillagerLevel, int 
     }
 
     @Override
-    public EnchantData childFromJson(@NotNull JsonObject json) {
+    public FieldEnchantment childFromJson(@NotNull JsonObject json) {
         List<Enchantment> enchantments = new ArrayList<>();
         if (json.has("enchantments") && json.get("enchantments").isJsonPrimitive()) {
             enchantments.add(JsonConvertible.getRegister(json, "enchantments", Registries.ENCHANTMENT));
@@ -85,7 +85,7 @@ public record EnchantData(boolean useSameEnchant, boolean useVillagerLevel, int 
         boolean useVillagerLevel = JsonHelper.getBoolean(json, "use_villager_level", this.useVillagerLevel);
         int fixedLevel = JsonHelper.getInt(json, "fixed_level", this.fixedLevel);
 
-        return new EnchantData(useSameEnchant, useVillagerLevel, fixedLevel, enchantments);
+        return new FieldEnchantment(useSameEnchant, useVillagerLevel, fixedLevel, enchantments);
     }
 
 

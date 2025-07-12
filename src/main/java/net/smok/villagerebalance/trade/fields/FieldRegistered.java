@@ -1,17 +1,18 @@
-package net.smok.villagerebalance.utility;
+package net.smok.villagerebalance.trade.fields;
 
 import com.google.gson.JsonObject;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.smok.villagerebalance.utility.JsonConvertible;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Optional;
 
-public record RegisteredField<T>(Registry<T> registry, T value) implements JsonConvertible<RegisteredField<T>> {
+public record FieldRegistered<T>(Registry<T> registry, T value) implements JsonConvertible<FieldRegistered<T>> {
     @Override
-    public RegisteredField<T> childFromJson(@NotNull JsonObject json) {
+    public FieldRegistered<T> childFromJson(@NotNull JsonObject json) {
         T value = JsonConvertible.getRegister(json, "value", registry, this.value);
-        return new RegisteredField<>(registry, value);
+        return new FieldRegistered<>(registry, value);
     }
 
     @Override

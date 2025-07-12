@@ -29,7 +29,7 @@ import net.minecraft.village.TradeOffer;
 import net.minecraft.world.gen.structure.Structure;
 import net.smok.villagerebalance.Debug;
 import net.smok.villagerebalance.Values;
-import net.smok.villagerebalance.trade.EnchantData;
+import net.smok.villagerebalance.trade.fields.*;
 import net.smok.villagerebalance.utility.*;
 import org.jetbrains.annotations.Contract;
 
@@ -45,9 +45,9 @@ public final class ItemFunctions {
 
 
 
-    public static final ItemFunction<ColorField> LEATHER_COLOR = register("leather_color", new ItemFunction<>(
-            new ColorField(0, false), (itemStack, entity, colorField) -> {
-                int color = colorField.useSameColor() ? foreachOffer(entity, ItemFunctions::getColor).orElse(colorField.color()) : colorField.color();
+    public static final ItemFunction<FieldColor> LEATHER_COLOR = register("leather_color", new ItemFunction<>(
+            new FieldColor(0, false), (itemStack, entity, fieldColor) -> {
+                int color = fieldColor.useSameColor() ? foreachOffer(entity, ItemFunctions::getColor).orElse(fieldColor.color()) : fieldColor.color();
 
                 NbtCompound nbt = itemStack.getOrCreateNbt();
                 NbtCompound display = nbt.contains("display") ? nbt.getCompound("display") : new NbtCompound();
@@ -57,11 +57,11 @@ public final class ItemFunctions {
     }));
 
 
-    public static final ItemFunction<EnchantData> ENCHANT = register("enchantment", new ItemFunction<>(
-            new EnchantData(false, false, 0, List.of(Enchantments.UNBREAKING)),
-            (itemStack, entity, enchantData) -> {
-                Enchantment enchantment = enchantData.useSameEnchant() ? foreachOffer(entity, enchantData::getSame).orElse(enchantData.getRandom(entity.getRandom())) : enchantData.getRandom(entity.getRandom());
-                int level = enchantData.getLevel(enchantment, entity);
+    public static final ItemFunction<FieldEnchantment> ENCHANT = register("enchantment", new ItemFunction<>(
+            new FieldEnchantment(false, false, 0, List.of(Enchantments.UNBREAKING)),
+            (itemStack, entity, fieldEnchantment) -> {
+                Enchantment enchantment = fieldEnchantment.useSameEnchant() ? foreachOffer(entity, fieldEnchantment::getSame).orElse(fieldEnchantment.getRandom(entity.getRandom())) : fieldEnchantment.getRandom(entity.getRandom());
+                int level = fieldEnchantment.getLevel(enchantment, entity);
 
                 if (itemStack.getItem() instanceof EnchantedBookItem) {
                     NbtCompound nbt = itemStack.getOrCreateNbt();
@@ -77,18 +77,18 @@ public final class ItemFunctions {
 
             }));
 
-    public static final ItemFunction<StatusEffectField> EFFECT_ITEM = register("effect_item", new ItemFunction<>(
-            new StatusEffectField(StatusEffects.ABSORPTION, 1), (itemStack, entity, statusEffectField) -> {
+    public static final ItemFunction<FieldStatusEffect> EFFECT_ITEM = register("effect_item", new ItemFunction<>(
+            new FieldStatusEffect(StatusEffects.ABSORPTION, 1), (itemStack, entity, fieldStatusEffect) -> {
                 if (itemStack.getItem() instanceof SuspiciousStewItem) {
-                    SuspiciousStewItem.addEffectToStew(itemStack, statusEffectField.statusEffect(), statusEffectField.duration());
+                    SuspiciousStewItem.addEffectToStew(itemStack, fieldStatusEffect.statusEffect(), fieldStatusEffect.duration());
                 }
     }));
 
 
-    public static final ItemFunction<MapData> FILL_MAP = register("fill_map", new ItemFunction<>(
-            MapData.VILLAGE, (itemStack, entity, mapData) -> {
+    public static final ItemFunction<FieldMap> FILL_MAP = register("fill_map", new ItemFunction<>(
+            FieldMap.VILLAGE, (itemStack, entity, fieldMap) -> {
                 ServerWorld serverWorld = (ServerWorld) entity.getWorld();
-                BlockPos blockPos = serverWorld.locateStructure(mapData.structure(), entity.getBlockPos(), 100, true);
+                BlockPos blockPos = serverWorld.locateStructure(fieldMap.structure(), entity.getBlockPos(), 100, true);
 
                 if (blockPos != null) {
                     ItemStack filledMap = FilledMapItem.createMap(serverWorld, blockPos.getX(), blockPos.getZ(), (byte) 2, true, true);
@@ -99,20 +99,20 @@ public final class ItemFunctions {
                     itemStack.setNbt(nbt);
 
                     FilledMapItem.fillExplorationMap(serverWorld, itemStack);
-                    MapState.addDecorationsNbt(itemStack, blockPos, "+", mapData.icon());
-                    itemStack.setCustomName(Text.translatable(mapData.nameKey()));
+                    MapState.addDecorationsNbt(itemStack, blockPos, "+", fieldMap.icon());
+                    itemStack.setCustomName(Text.translatable(fieldMap.nameKey()));
                 }
     }));
 
-    public static final ItemFunction<RegisteredField<Potion>> POTION = register("potion", new ItemFunction<>(new RegisteredField<>(Registries.POTION, Potions.EMPTY),
-            (itemStack, entity, potionRegisteredField) -> {
+    public static final ItemFunction<FieldRegistered<Potion>> POTION = register("potion", new ItemFunction<>(new FieldRegistered<>(Registries.POTION, Potions.EMPTY),
+            (itemStack, entity, potionFieldRegistered) -> {
                 NbtCompound nbt = itemStack.getOrCreateNbt();
-                nbt.putString("Potion", Registries.POTION.getId(potionRegisteredField.value()).toString());
+                nbt.putString("Potion", Registries.POTION.getId(potionFieldRegistered.value()).toString());
             }));
 
 
-    public static final ItemFunction<RegisteredField<PaintingVariant>> PAINTING = register("painting", new ItemFunction<>(
-            new RegisteredField<>(Registries.PAINTING_VARIANT, null),
+    public static final ItemFunction<FieldRegistered<PaintingVariant>> PAINTING = register("painting", new ItemFunction<>(
+            new FieldRegistered<>(Registries.PAINTING_VARIANT, null),
             (itemStack, entity, variant) -> {
                 Optional<String> value = variant.valueToString();
 
@@ -146,19 +146,19 @@ public final class ItemFunctions {
     }
 
 
-    public static ItemFunction.Data<EnchantData> ofProgression(Enchantment... enchantments) {
-        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(true, true, 0, enchantments));
+    public static ItemFunction.Data<FieldEnchantment> ofProgression(Enchantment... enchantments) {
+        return new ItemFunction.Data<>(ENCHANT, FieldEnchantment.of(true, true, 0, enchantments));
     }
 
-    public static ItemFunction.Data<EnchantData> ofSingle(Enchantment... enchantments) {
-        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(false, false, 0, enchantments));
+    public static ItemFunction.Data<FieldEnchantment> ofSingle(Enchantment... enchantments) {
+        return new ItemFunction.Data<>(ENCHANT, FieldEnchantment.of(false, false, 0, enchantments));
     }
-    public static ItemFunction.Data<EnchantData> ofSingle(int fixedLevel, Enchantment... enchantments) {
-        return new ItemFunction.Data<>(ENCHANT, EnchantData.of(false, false, fixedLevel, enchantments));
+    public static ItemFunction.Data<FieldEnchantment> ofSingle(int fixedLevel, Enchantment... enchantments) {
+        return new ItemFunction.Data<>(ENCHANT, FieldEnchantment.of(false, false, fixedLevel, enchantments));
     }
 
     public static ItemFunction.Data<?> ofColor(int color, boolean useSameColor) {
-        return new ItemFunction.Data<>(LEATHER_COLOR, new ColorField(color, true));
+        return new ItemFunction.Data<>(LEATHER_COLOR, new FieldColor(color, true));
     }
 
     @Contract("_, _ -> new")
@@ -171,23 +171,23 @@ public final class ItemFunctions {
     }
 
     public static ItemFunction.Data<?> of(StatusEffect effect, int duration) {
-        return of(EFFECT_ITEM, new StatusEffectField(effect, duration));
+        return of(EFFECT_ITEM, new FieldStatusEffect(effect, duration));
     }
 
     public static ItemFunction.Data<?> of(TagKey<Structure> structure, String nameKey, MapIcon.Type type) {
-        return of(FILL_MAP, new MapData(structure, nameKey, type));
+        return of(FILL_MAP, new FieldMap(structure, nameKey, type));
     }
 
-    public static ItemFunction.Data<?> of(MapData map) {
+    public static ItemFunction.Data<?> of(FieldMap map) {
         return of(FILL_MAP, map);
     }
 
     public static ItemFunction.Data<?> of(Potion potion) {
-        return of(POTION, new RegisteredField<>(Registries.POTION, potion));
+        return of(POTION, new FieldRegistered<>(Registries.POTION, potion));
     }
 
     public static ItemFunction.Data<?> of(PaintingVariant variant) {
-        return of(PAINTING, new RegisteredField<>(Registries.PAINTING_VARIANT, variant));
+        return of(PAINTING, new FieldRegistered<>(Registries.PAINTING_VARIANT, variant));
     }
 
     private static Optional<Integer> getColor(ItemStack itemStack1) {

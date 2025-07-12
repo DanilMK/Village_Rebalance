@@ -15,12 +15,10 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
-import net.minecraft.village.VillagerProfession;
-import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.Debug;
 import net.smok.villagerebalance.Values;
 import net.smok.villagerebalance.utility.JsonConvertible;
-import net.smok.villagerebalance.trade.VillagerData;
+import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.utility.TradeRegistries;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -37,22 +35,22 @@ public final class Conditions {
 
 
 
-    public static final Condition<VillagerData> VILLAGER_DATA = register("villager_data", new Condition<>() {
+    public static final Condition<FieldVillagerData> VILLAGER_DATA = register("villager_data", new Condition<>() {
 
         @Override
-        public boolean match(MerchantEntity entity, VillagerData data) {
+        public boolean match(MerchantEntity entity, FieldVillagerData data) {
             return entity instanceof VillagerEntity villager && data.match(villager.getVillagerData());
         }
 
 
         @Override
-        public void toJson(JsonObject json, VillagerData data) {
+        public void toJson(JsonObject json, FieldVillagerData data) {
             data.toJson(json);
         }
 
         @Override
-        public VillagerData fromJson(JsonObject json) {
-            return VillagerData.EMPTY.childFromJson(json);
+        public FieldVillagerData fromJson(JsonObject json) {
+            return FieldVillagerData.EMPTY.childFromJson(json);
         }
     });
 
@@ -190,7 +188,7 @@ public final class Conditions {
         return new Condition.Data<>(condition, data);
     }
 
-    public static Condition.Data<VillagerData> of(VillagerData data) {
+    public static Condition.Data<FieldVillagerData> of(FieldVillagerData data) {
         return of(VILLAGER_DATA, data);
     }
 

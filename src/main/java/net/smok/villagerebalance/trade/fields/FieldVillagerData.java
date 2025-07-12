@@ -1,19 +1,18 @@
-package net.smok.villagerebalance.trade;
+package net.smok.villagerebalance.trade.fields;
 
 import com.google.gson.JsonObject;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
-import net.smok.villagerebalance.Debug;
 import net.smok.villagerebalance.utility.JsonConvertible;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public record VillagerData(@Nullable VillagerType type, @Nullable VillagerProfession profession, int level) implements JsonConvertible<VillagerData> {
+public record FieldVillagerData(@Nullable VillagerType type, @Nullable VillagerProfession profession, int level) implements JsonConvertible<FieldVillagerData> {
 
-    public static final VillagerData EMPTY = new VillagerData(null, null, 0);
+    public static final FieldVillagerData EMPTY = new FieldVillagerData(null, null, 0);
 
     public boolean match(net.minecraft.village.@NotNull VillagerData villagerData) {
 
@@ -26,27 +25,27 @@ public record VillagerData(@Nullable VillagerType type, @Nullable VillagerProfes
                 (villagerData.getProfession() == profession || villagerData.getProfession() == null || profession == null);
     }
 
-    public static @NotNull VillagerData of (VillagerType type, VillagerProfession profession, int level) {
-        return new VillagerData(type, profession, level);
+    public static @NotNull FieldVillagerData of (VillagerType type, VillagerProfession profession, int level) {
+        return new FieldVillagerData(type, profession, level);
     }
 
     @Contract("_, _ -> new")
-    public static @NotNull VillagerData of(VillagerProfession profession, int level) {
-        return new VillagerData(null, profession, level);
+    public static @NotNull FieldVillagerData of(VillagerProfession profession, int level) {
+        return new FieldVillagerData(null, profession, level);
     }
 
-    public static @NotNull VillagerData of(VillagerType type) {
-        return new VillagerData(type, null, 0);
+    public static @NotNull FieldVillagerData of(VillagerType type) {
+        return new FieldVillagerData(type, null, 0);
     }
 
     @Override
-    public VillagerData childFromJson(@NotNull JsonObject json) {
+    public FieldVillagerData childFromJson(@NotNull JsonObject json) {
         VillagerType type = JsonConvertible.getRegister(json, "villager_type", Registries.VILLAGER_TYPE, type());
         VillagerProfession profession = JsonConvertible.getRegister(json, "villager_profession", Registries.VILLAGER_PROFESSION, profession());
         int level = JsonHelper.getInt(json, "villager_level", level());
 
         if (type == type() && profession == profession() && level == level()) return this;
-        return new VillagerData(type, profession, level);
+        return new FieldVillagerData(type, profession, level);
     }
 
     @Override

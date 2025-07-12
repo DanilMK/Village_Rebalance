@@ -1,15 +1,16 @@
-package net.smok.villagerebalance.utility;
+package net.smok.villagerebalance.trade.fields;
 
 import com.google.gson.JsonObject;
 import net.minecraft.util.JsonHelper;
+import net.smok.villagerebalance.utility.JsonConvertible;
 import org.jetbrains.annotations.NotNull;
 
-public record ColorField(int color, boolean useSameColor) implements JsonConvertible<ColorField> {
+public record FieldColor(int color, boolean useSameColor) implements JsonConvertible<FieldColor> {
     @Override
-    public ColorField childFromJson(@NotNull JsonObject json) {
+    public FieldColor childFromJson(@NotNull JsonObject json) {
         boolean useSameColor = JsonHelper.getBoolean(json, "use_same_color", this.useSameColor);
         int color = JsonHelper.getInt(json, "color", this.color);
-        return new ColorField(color, useSameColor);
+        return new FieldColor(color, useSameColor);
     }
 
     @Override

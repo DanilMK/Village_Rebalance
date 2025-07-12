@@ -1,8 +1,9 @@
-package net.smok.villagerebalance.utility;
+package net.smok.villagerebalance.trade.fields;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 import net.minecraft.util.JsonHelper;
+import net.smok.villagerebalance.utility.JsonConvertible;
 import org.jetbrains.annotations.NotNull;
 
 public record FieldInt(int value) implements JsonConvertible<FieldInt> {
