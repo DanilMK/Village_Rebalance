@@ -13,10 +13,10 @@ import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
 import java.util.Map;
 
-public class ArmorerProvider extends TradeOffersProvider {
+public class ArmorerVillager extends VillagerTradeOffers {
 
 
-    public ArmorerProvider() {
+    public ArmorerVillager() {
         super(VillagerProfession.ARMORER);
     }
 

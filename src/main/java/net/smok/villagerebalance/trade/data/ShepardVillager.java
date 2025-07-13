@@ -6,10 +6,10 @@ import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
-public class ShepardProvider extends TradeOffersProvider {
+public class ShepardVillager extends VillagerTradeOffers {
 
 
-    protected ShepardProvider() {
+    protected ShepardVillager() {
         super(VillagerProfession.SHEPHERD);
     }
 

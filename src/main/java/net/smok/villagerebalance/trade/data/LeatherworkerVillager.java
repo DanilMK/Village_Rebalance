@@ -6,10 +6,10 @@ import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
-public class LeatherworkerProvider extends TradeOffersProvider{
+public class LeatherworkerVillager extends VillagerTradeOffers {
 
 
-    protected LeatherworkerProvider() {
+    protected LeatherworkerVillager() {
         super(VillagerProfession.LEATHERWORKER);
     }
 

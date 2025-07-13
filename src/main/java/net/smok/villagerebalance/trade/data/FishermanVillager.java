@@ -8,10 +8,10 @@ import net.smok.villagerebalance.trade.conditions.Conditions;
 import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
-public class FishermanProvider extends TradeOffersProvider {
+public class FishermanVillager extends VillagerTradeOffers {
 
 
-    public FishermanProvider() {
+    public FishermanVillager() {
         super(VillagerProfession.FISHERMAN);
     }
 

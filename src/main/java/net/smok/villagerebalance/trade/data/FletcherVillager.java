@@ -5,10 +5,10 @@ import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
-public class FletcherProvider extends TradeOffersProvider {
+public class FletcherVillager extends VillagerTradeOffers {
 
 
-    public FletcherProvider() {
+    public FletcherVillager() {
         super(VillagerProfession.FLETCHER);
     }
 

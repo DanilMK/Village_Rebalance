@@ -7,8 +7,8 @@ import net.smok.villagerebalance.trade.ItemContainer;
 
 import java.util.Arrays;
 
-public class LibrarianProvider extends TradeOffersProvider{
-    protected LibrarianProvider() {
+public class LibrarianVillager extends VillagerTradeOffers {
+    protected LibrarianVillager() {
         super(VillagerProfession.LIBRARIAN);
     }
 

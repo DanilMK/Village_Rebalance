@@ -11,10 +11,10 @@ import net.smok.villagerebalance.trade.fields.FieldMap;
 import java.util.Arrays;
 import java.util.Map;
 
-public class CartographerProvider extends TradeOffersProvider {
+public class CartographerVillager extends VillagerTradeOffers {
 
 
-    public CartographerProvider() {
+    public CartographerVillager() {
         super(VillagerProfession.CARTOGRAPHER);
     }
 
@@ -25,7 +25,7 @@ public class CartographerProvider extends TradeOffersProvider {
         sellForEmerald("empty_map", 1, 12, item(Items.MAP));
 
         buyForEmerald("colored_glass_pane", 2, 12,
-                Arrays.stream(GLASS_PANES).map(TradeOffersProvider::item).toArray(ItemContainer[]::new)
+                Arrays.stream(GLASS_PANES).map(VillagerTradeOffers::item).toArray(ItemContainer[]::new)
         );
 
 

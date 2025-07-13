@@ -5,9 +5,9 @@ import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 
-public class WeaponsmithProvider extends TradeOffersProvider {
+public class WeaponsmithVillager extends VillagerTradeOffers {
 
-    public WeaponsmithProvider() {
+    public WeaponsmithVillager() {
         super(VillagerProfession.WEAPONSMITH);
     }
 

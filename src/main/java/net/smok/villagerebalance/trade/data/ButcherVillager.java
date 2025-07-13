@@ -6,9 +6,9 @@ import net.minecraft.village.VillagerProfession;
 import net.smok.villagerebalance.trade.conditions.Conditions;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
-public class ButcherProvider extends TradeOffersProvider {
+public class ButcherVillager extends VillagerTradeOffers {
 
-    public ButcherProvider() {
+    public ButcherVillager() {
         super(VillagerProfession.BUTCHER);
     }
 

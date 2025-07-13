@@ -11,9 +11,9 @@ import net.smok.villagerebalance.trade.conditions.Conditions;
 
 import java.util.Map;
 
-public class MasonProvider extends TradeOffersProvider {
+public class MasonVillager extends VillagerTradeOffers {
 
-    public MasonProvider() {
+    public MasonVillager() {
         super(VillagerProfession.MASON);
     }
 

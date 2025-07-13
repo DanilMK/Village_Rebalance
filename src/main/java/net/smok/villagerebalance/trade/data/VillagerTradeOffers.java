@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class TradeOffersProvider {
+public abstract class VillagerTradeOffers {
 
 
     public static final String DIRECTORY = "village";
@@ -99,7 +99,7 @@ public abstract class TradeOffersProvider {
     private final HashMap<Identifier, OfferFactory> objects = new HashMap<>();
     protected final VillagerProfession profession;
 
-    protected TradeOffersProvider(VillagerProfession profession) {
+    protected VillagerTradeOffers(VillagerProfession profession) {
         this.profession = profession;
     }
 

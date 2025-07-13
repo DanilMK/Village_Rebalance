@@ -5,10 +5,10 @@ import net.minecraft.potion.Potions;
 import net.minecraft.village.VillagerProfession;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
-public class ClericProvider extends TradeOffersProvider {
+public class ClericVillager extends VillagerTradeOffers {
 
 
-    public ClericProvider() {
+    public ClericVillager() {
         super(VillagerProfession.CLERIC);
     }
 

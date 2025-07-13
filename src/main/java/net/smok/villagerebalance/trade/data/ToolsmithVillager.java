@@ -5,9 +5,9 @@ import net.minecraft.item.Items;
 import net.minecraft.village.VillagerProfession;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 
-public class ToolsmithProvider extends TradeOffersProvider {
+public class ToolsmithVillager extends VillagerTradeOffers {
 
-    public ToolsmithProvider() {
+    public ToolsmithVillager() {
         super(VillagerProfession.TOOLSMITH);
     }
 

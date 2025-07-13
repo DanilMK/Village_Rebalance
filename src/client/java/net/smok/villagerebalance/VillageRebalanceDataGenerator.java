@@ -32,7 +32,7 @@ public class VillageRebalanceDataGenerator implements DataGeneratorEntrypoint {
 		private final DataOutput.PathResolver pathResolver;
 
 		private TradeOffersDataProvider(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryFuture) {
-			this.pathResolver = dataOutput.getResolver(DataOutput.OutputType.DATA_PACK, TradeOffersProvider.DIRECTORY);
+			this.pathResolver = dataOutput.getResolver(DataOutput.OutputType.DATA_PACK, VillagerTradeOffers.DIRECTORY);
 		}
 
 
@@ -40,7 +40,8 @@ public class VillageRebalanceDataGenerator implements DataGeneratorEntrypoint {
 		public CompletableFuture<?> run(DataWriter writer) {
 			final List<CompletableFuture<?>> futures = new ArrayList<>();
 
-			for (TradeOffersProvider provider : TradeOffersProviders.providers) {
+			VillagerTradeOffersProvider villagerOffers = new VillagerTradeOffersProvider();
+			for (VillagerTradeOffers provider : villagerOffers.providers) {
 				provider.fill();
 				for (Map.Entry<Identifier, OfferFactory> entry : provider.getObjects().entrySet()) {
 					futures.add(DataProvider.writeToPath(writer, entry.getValue().toJson(), pathResolver.resolveJson(entry.getKey())));
