@@ -1,6 +1,6 @@
 {
   "condition": {
-    "condition_type": "village_rebalance:wandering_trader_condition"
+    "condition_type": "village_rebalance:merchant_is_wandering_trader"
   },
   "first_buy": {
     "id": "minecraft:emerald"

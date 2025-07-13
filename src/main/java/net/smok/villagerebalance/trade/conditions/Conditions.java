@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.VillagerEntity;
+import net.minecraft.entity.passive.WanderingTraderEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -54,7 +55,7 @@ public final class Conditions {
         }
     });
 
-    public static final OfferCondition<Item> ITEM_OFFER_CONDITION = register("offer_item", new OfferCondition<>() {
+    public static final OfferCondition<Item> ITEM_OFFER_CONDITION = register("offers_contains_item", new OfferCondition<>() {
         @Override
         public boolean match(ItemStack itemStack, Item data) {
             return itemStack.isOf(data);
@@ -71,7 +72,7 @@ public final class Conditions {
         }
     });
 
-    public static final OfferCondition<TagKey<Item>> TAG_KEY_OFFERS_CONDITION = register("offer_tag", new OfferCondition<>() {
+    public static final OfferCondition<TagKey<Item>> TAG_KEY_OFFERS_CONDITION = register("offers_contains_tag", new OfferCondition<>() {
         @Override
         public void toJsonLocal(JsonObject json, TagKey<Item> data) {
             json.addProperty("tag", data.id().toString());
@@ -90,7 +91,7 @@ public final class Conditions {
         }
     });
     
-    public static final OfferCondition<Integer> OFFER_COLORED_CONDITION = register("offer_colored", new OfferCondition<Integer>() {
+    public static final OfferCondition<Integer> OFFER_COLORED_CONDITION = register("offers_are_colored", new OfferCondition<Integer>() {
         @Override
         public void toJsonLocal(JsonObject json, Integer data) {
             json.addProperty("color", data);
@@ -162,11 +163,11 @@ public final class Conditions {
     });
 
 
-    public static final Condition<Boolean> WANDERING_TRADER_CONDITION = register("wandering_trader_condition", new Condition<Boolean>() {
+    public static final Condition<Boolean> WANDERING_TRADER_CONDITION = register("merchant_is_wandering_trader", new Condition<Boolean>() {
 
         @Override
         public boolean match(MerchantEntity entity, Boolean data) {
-            return entity instanceof MerchantEntity;
+            return entity instanceof WanderingTraderEntity;
         }
 
         @Override

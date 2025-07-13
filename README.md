@@ -2,7 +2,7 @@
 The mod adds the following systems and additions to trade:
 - DataPack driving
 - Rework some villagers trade offers
-- Rework wandering trader offers [Will be in future updates]
+- Rework wandering trader offers 
 - Consistency System
 - Variety System
 - Leveling System [Will be in future updates]
