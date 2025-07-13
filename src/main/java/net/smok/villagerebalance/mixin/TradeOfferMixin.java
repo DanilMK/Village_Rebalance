@@ -11,37 +11,36 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Objects;
-
 @Mixin(TradeOffer.class)
 public class TradeOfferMixin implements VRTradeOffer {
 
     @Unique
-    private String rarity = "";
+    private boolean vanishable = false;
 
     @Override
-    public String vRFabric$getRarity() {
-        return rarity;
+    public boolean vRFabric$isVanishable() {
+        return vanishable;
     }
 
     @Override
-    public void vRFabric$setRarity(String rarity) {
-        this.rarity = rarity;
+    public void vRFabric$setVanishable(boolean vanishable) {
+        this.vanishable = vanishable;
     }
 
     @Inject(method = "<init>(Lnet/minecraft/nbt/NbtCompound;)V", at = @At("TAIL"))
     void nbtConstructor(NbtCompound nbt, CallbackInfo ci) {
 
-        if (nbt.contains("rarity", NbtElement.INT_TYPE)) {
-            rarity = nbt.getString("rarity");
+        if (nbt.contains("vanishable")) {
+            vanishable = nbt.getBoolean("vanishable");
         }
     }
 
     @Inject(method = "toNbt", at = @At("RETURN"), cancellable = true)
     void toNbt(CallbackInfoReturnable<NbtCompound> cir) {
-        if (rarity.isEmpty()) return;
-        NbtCompound returnValue = cir.getReturnValue();
-        returnValue.putString("rarity", rarity);
-        cir.setReturnValue(returnValue);
+        if (vanishable) {
+            NbtCompound returnValue = cir.getReturnValue();
+            returnValue.putBoolean("vanishable", true);
+            cir.setReturnValue(returnValue);
+        }
     }
 }

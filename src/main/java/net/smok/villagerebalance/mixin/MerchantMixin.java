@@ -4,9 +4,13 @@ import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOfferList;
 import net.smok.villagerebalance.VRMerchantEntity;
+import net.smok.villagerebalance.VRTradeOffer;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MerchantEntity.class)
 public abstract class MerchantMixin implements VRMerchantEntity {
@@ -24,5 +28,14 @@ public abstract class MerchantMixin implements VRMerchantEntity {
     @Override
     public MerchantEntity asMerchant() {
         return (MerchantEntity) (Object) this;
+    }
+
+    @Inject(method = "trade", at = @At("TAIL"))
+    public void removeTradeOffer(TradeOffer offer, CallbackInfo ci) {
+        VRTradeOffer vrOffer = (VRTradeOffer) offer;
+        if (vrOffer.vRFabric$isVanishable() && offer.getUses() >= offer.getMaxUses()) {
+            offers.remove(offer);
+        }
+
     }
 }

@@ -2,7 +2,7 @@ package net.smok.villagerebalance;
 
 public interface VRTradeOffer {
 
-    String vRFabric$getRarity();
+    boolean vRFabric$isVanishable();
 
-    void vRFabric$setRarity(String rarity);
+    void vRFabric$setVanishable(boolean vanishable);
 }

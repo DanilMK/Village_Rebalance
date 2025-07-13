@@ -25,7 +25,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, ItemContainer[] sell, int maxUses,
-                           boolean rewardPlayer, float priceMultiplier, int experience, String rarity, Condition.Data<?> condition)
+                           boolean rewardPlayer, float priceMultiplier, int experience, String rarity, boolean vanishable, Condition.Data<?> condition)
         implements TradeOffers.Factory, JsonConvertible<OfferFactory> {
 
     private static final String KEY_FIRST_BUY = "first_buy";
@@ -37,6 +37,8 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
     private static final String KEY_PRICE_MULTIPLIER = "price_multiplier";
     private static final String KEY_EXPERIENCE = "merchant_experience";
     private static final String KEY_CONDITION = "condition";
+    public static final String KEY_RARITY = "rarity";
+    public static final String KEY_VANISHABLE = "vanishable";
 
 
     public static final OfferFactory DEFAULT_FACTORY =
@@ -48,11 +50,15 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
         this(new ItemContainer[]{ItemContainer.of(firstBuy)},
                 new ItemContainer[]{ItemContainer.of(secondBuy)},
                 new ItemContainer[]{ItemContainer.of(sell)},
-                maxUses, rewardPlayer, priceMultiplier, experience, "", condition);
+                maxUses, rewardPlayer, priceMultiplier, experience, "", false, condition);
     }
 
     public OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, ItemContainer[] sell, int maxUses, boolean rewardPlayer, float priceMultiplier, int experience, Condition.Data<?> condition) {
-        this(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, "", condition);
+        this(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, "", false, condition);
+    }
+
+    public OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, ItemContainer[] sell, int maxUses, boolean rewardPlayer, float priceMultiplier, int experience, String rarity, Condition.Data<?> condition) {
+        this(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, rarity, false, condition);
     }
 
     public @NotNull OfferFactory childFromJson(@NotNull JsonObject json) {
@@ -65,10 +71,11 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
         boolean rewardPlayer = JsonHelper.getBoolean(json, KEY_REWARD_PLAYER, this.rewardPlayer);
         float priceMultiplier = MathHelper.clamp(JsonHelper.getFloat(json, KEY_PRICE_MULTIPLIER, this.priceMultiplier), 0, 1);
         int experience = MathHelper.clamp(JsonHelper.getInt(json, KEY_EXPERIENCE, this.experience), 0, 256);
-        String rarity = JsonHelper.getString(json, "rarity", rarity());
+        String rarity = JsonHelper.getString(json, KEY_RARITY, rarity());
+        boolean vanishable = JsonHelper.getBoolean(json, KEY_VANISHABLE, vanishable());
         Condition.Data<?> offerCondition = Condition.getFromJson(json.getAsJsonObject(KEY_CONDITION));
 
-        return new OfferFactory(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, rarity, offerCondition);
+        return new OfferFactory(firstBuy, secondBuy, sell, maxUses, rewardPlayer, priceMultiplier, experience, rarity, vanishable, offerCondition);
     }
 
 
@@ -78,7 +85,8 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
         result.addProperty(KEY_MAX_USES, this.maxUses());
         result.addProperty(KEY_PRICE_MULTIPLIER, this.priceMultiplier());
         result.addProperty(KEY_REWARD_PLAYER, this.rewardPlayer());
-        if (!rarity.isEmpty()) result.addProperty("rarity", rarity);
+        if (!rarity.isEmpty()) result.addProperty(KEY_RARITY, rarity);
+        if (vanishable) result.addProperty(KEY_VANISHABLE, true);
         ItemContainer.toJson(result, KEY_FIRST_BUY, firstBuy);
         ItemContainer.toJson(result, KEY_SECOND_BUY, secondBuy);
         ItemContainer.toJson(result, KEY_SELL, sell);
@@ -133,7 +141,8 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
                 randomContainer(firstBuy, (MerchantEntity) entity),
                 randomContainer(secondBuy, (MerchantEntity) entity),
                 randomContainer(sell, (MerchantEntity) entity), maxUses, experience, priceMultiplier);
-        ((VRTradeOffer)tradeOffer).vRFabric$setRarity(rarity);
+        VRTradeOffer offer = (VRTradeOffer) tradeOffer;
+        offer.vRFabric$setVanishable(vanishable);
         return tradeOffer;
     }
 
@@ -158,6 +167,7 @@ public record OfferFactory(ItemContainer[] firstBuy, ItemContainer[] secondBuy, 
                 ", experience=" + experience +
                 ", condition=" + condition +
                 ", rarity=" + rarity +
+                ", vanishable=" + vanishable +
                 '}';
     }
 
