@@ -34,7 +34,8 @@ public class OffersLoader implements SimpleSynchronousResourceReloadListener {
             try {
                 OfferFactory factory = OfferFactory.DEFAULT_FACTORY.childFromJson(entry.getValue());
 
-                Identifier id = new Identifier(entry.getKey().getNamespace(), entry.getKey().getPath().split("\\.")[0]);
+                String path = entry.getKey().getPath();
+                Identifier id = new Identifier(entry.getKey().getNamespace(), path.substring(path.indexOf("/") + 1, path.lastIndexOf(".")));
 
                 if (!factory.isEmpty()) builder.put(id, factory);
                 else Debug.warn("Offer " + entry.getKey() + " is empty\n" + factory);
@@ -45,7 +46,7 @@ public class OffersLoader implements SimpleSynchronousResourceReloadListener {
             }
         }
         TradeRegistries.tradeOffers = new TradeOffers(builder.build());
-        Debug.log("Loaded offers: " + String.join(", ", TradeRegistries.tradeOffers.offers().keySet().stream().map(Identifier::toString).toList()));
+        //Debug.log("Loaded offers: " + String.join(", ", TradeRegistries.tradeOffers.offers().keySet().stream().map(Identifier::toString).toList()));
     }
 
 

@@ -5,10 +5,13 @@ import com.mojang.brigadier.arguments.IntegerArgumentType;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.suggestion.SuggestionProvider;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.minecraft.command.CommandRegistryAccess;
+import net.minecraft.command.CommandSource;
 import net.minecraft.command.argument.EntityArgumentType;
 import net.minecraft.command.argument.IdentifierArgumentType;
+import net.minecraft.command.suggestion.SuggestionProviders;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.server.command.CommandManager;
@@ -29,13 +32,17 @@ public class MerchantCommand implements CommandRegistrationCallback {
     private static final SimpleCommandExceptionType INVALID_POSITION_EXCEPTION = new SimpleCommandExceptionType(Text.translatable("commands.summon.invalidPosition"));
     private static final SimpleCommandExceptionType INVALID_ENTITY_TYPE = new SimpleCommandExceptionType(Text.literal("Entity must be villager."));
 
+    public static final SuggestionProvider<ServerCommandSource> TRADE_OFFERS =
+            SuggestionProviders.register(Identifier.of(Values.MOD_ID, "trade_offers"), (context, builder) ->
+                    CommandSource.suggestIdentifiers(TradeRegistries.tradeOffers.offers().keySet(), builder));
+
     @Override
     public void register(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess access, CommandManager.RegistrationEnvironment environment) {
         dispatcher.register(CommandManager.literal("merchant").requires(source -> source.hasPermissionLevel(2))
                 //.then(CommandManager.literal("summon").then(CommandManager.argument("position", Vec3ArgumentType.vec3()).executes(this::summon)))
                 .then(CommandManager.literal("edit").then(CommandManager.argument("entity", EntityArgumentType.entities())
                         .then(CommandManager.literal("remove").then(CommandManager.argument("index", IntegerArgumentType.integer(0)).executes(this::remove)))
-                        .then(CommandManager.literal("addId").then(CommandManager.argument("id", IdentifierArgumentType.identifier()).executes(this::addId)))/*
+                        .then(CommandManager.literal("addId").then(CommandManager.argument("id", IdentifierArgumentType.identifier()).suggests(TRADE_OFFERS).executes(this::addId)))/*
                         .then(CommandManager.literal("addOffer")
                                 .then(CommandManager.argument("firstBuy", ItemStackArgumentType.itemStack(access))
                                         .then(CommandManager.argument("secondBuy", ItemStackArgumentType.itemStack(access))
