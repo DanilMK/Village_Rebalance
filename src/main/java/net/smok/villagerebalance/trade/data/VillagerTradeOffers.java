@@ -1,10 +1,12 @@
 package net.smok.villagerebalance.trade.data;
 
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
@@ -17,9 +19,7 @@ import net.smok.villagerebalance.trade.functions.ItemFunction;
 import net.smok.villagerebalance.trade.functions.ItemFunctions;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public abstract class VillagerTradeOffers {
 
@@ -183,12 +183,10 @@ public abstract class VillagerTradeOffers {
     }
 
     protected void buyDistributeForBiomes(String id, int level, int emeralds, int price,
-                                          int maxUses, Item[] items, Item[] conditionItems, OfferCondition.SearchType searchType, Map<VillagerType, int[]> typeMap) {
+                                          int maxUses, Item[] items, List<Pair<OfferCondition.SearchType, Item[]>> offerSearchItems, Map<VillagerType, int[]> typeMap) {
 
         typeMap.forEach((type, color) ->
-                putTradeOffer(id, Arrays.stream(color).mapToObj(i -> item(items[i], price,
-                                Conditions.of(Conditions.ITEM_OFFER_CONDITION, new OfferCondition.Searchable<>(searchType, conditionItems[i]))
-                        )).toArray(ItemContainer[]::new),
+                putTradeOffer(id, itemContainerFromOfferCondition(price, items, color, offerSearchItems),
                 ItemContainer.EMPTY,
                 new ItemContainer[]{item(emeralds)},
                 maxUses, 0.05f, experienceByLevelBuy(level),
@@ -206,15 +204,42 @@ public abstract class VillagerTradeOffers {
     }
 
     protected void sellDistributeForBiomes(String id, int level, int emeralds, int price,
-                                           int maxUses, Item[] items, Item[] conditionItems, OfferCondition.SearchType searchType, Map<VillagerType, int[]> typeMap) {
+                                           int maxUses, Item[] items, List<Pair<OfferCondition.SearchType, Item[]>> offerSearchItems, Map<VillagerType, int[]> typeMap) {
         typeMap.forEach((type, color) ->
                 putTradeOffer(id, new ItemContainer[]{item(emeralds)},
                 ItemContainer.EMPTY,
-                Arrays.stream(color).mapToObj(i -> item(items[i], price,
-                        Conditions.of(Conditions.ITEM_OFFER_CONDITION, new OfferCondition.Searchable<>(searchType, conditionItems[i]))))
-                        .toArray(ItemContainer[]::new),
+                        itemContainerFromOfferCondition(price, items, color, offerSearchItems),
                 maxUses, 0.05f, experienceByLevelSell(level),
                 new FieldVillagerData(type, profession, level))
+        );
+    }
+
+    private static ItemContainer @NotNull [] itemContainerFromOfferCondition(int price, Item[] items, int[] color, List<Pair<OfferCondition.SearchType, Item[]>> offerSearchItems) {
+        ItemContainer[] result = new ItemContainer[color.length];
+        for (int i = 0; i < color.length; i++) {
+            result[i] = item(items[color[i]], price, collapseOfferConditions(color[i], offerSearchItems));
+        }
+        return result;
+    }
+
+    private static Condition.Data<?> collapseOfferConditions(int color, List<Pair<OfferCondition.SearchType, Item[]>> offerSearchItems) {
+        if (offerSearchItems.size() == 1) {
+            Pair<OfferCondition.SearchType, Item[]> searchTypePair = offerSearchItems.get(0);
+            return Conditions.of(Conditions.ITEM_OFFER_CONDITION, searchTypePair.getLeft(), searchTypePair.getRight()[color]);
+        }
+        return Conditions.or(offerSearchItems.stream().map(searchTypePair -> Conditions.of(Conditions.ITEM_OFFER_CONDITION, searchTypePair.getLeft(), searchTypePair.getRight()[color])).toArray(Condition.Data[]::new));
+    }
+
+
+    protected <T> Map<VillagerType, T[]> villagerTypeMap(T[] plains, T[] jungle, T[] taiga, T[] savanna, T[] desert, T[] swamp, T[] snow) {
+        return Map.of(
+                VillagerType.PLAINS, plains,
+                VillagerType.JUNGLE, jungle,
+                VillagerType.TAIGA, taiga,
+                VillagerType.SAVANNA, savanna,
+                VillagerType.DESERT, desert,
+                VillagerType.SWAMP, swamp,
+                VillagerType.SNOW, snow
         );
     }
 

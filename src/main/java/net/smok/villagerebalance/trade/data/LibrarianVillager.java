@@ -22,10 +22,10 @@ public class LibrarianVillager extends VillagerTradeOffers {
 
         sellBook("enchanted_book", 0, Enchantments.UNBREAKING, Enchantments.MENDING, Enchantments.BINDING_CURSE, Enchantments.VANISHING_CURSE);
 
-        buyForEmerald("bookshelf", 1, 12, 9, item(Items.BOOKSHELF));
-        buyForEmerald("lantern", 2, 12, item(Items.LANTERN));
-        buyForEmerald("glass", 3, 12, item(Items.GLASS, 4));
-        buyForEmerald("candle", 4, 12, 2, Arrays.stream(CANDLES).map(item -> item(item, 4)).toArray(ItemContainer[]::new));
-        buyForEmerald("name_tag", 5, 12, 20, item(Items.NAME_TAG));
+        sellForEmerald("bookshelf", 1, 12, 9, item(Items.BOOKSHELF));
+        sellForEmerald("lantern", 2, 12, item(Items.LANTERN));
+        sellForEmerald("glass", 3, 12, item(Items.GLASS, 4));
+        sellForEmerald("candle", 4, 12, 2, Arrays.stream(CANDLES).map(item -> item(item, 4)).toArray(ItemContainer[]::new));
+        sellForEmerald("name_tag", 5, 12, 20, item(Items.NAME_TAG));
     }
 }

@@ -7,12 +7,26 @@
   },
   "first_buy": [
     {
-      "count": 8,
-      "id": "minecraft:oak_fence_gate"
+      "condition": {
+        "condition_type": "village_rebalance:offers_contains_item",
+        "item": "minecraft:oak_fence",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 8,
+        "id": "minecraft:oak_fence_gate"
+      }
     },
     {
-      "count": 8,
-      "id": "minecraft:birch_fence_gate"
+      "condition": {
+        "condition_type": "village_rebalance:offers_contains_item",
+        "item": "minecraft:birch_fence",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 8,
+        "id": "minecraft:birch_fence_gate"
+      }
     }
   ],
   "max_uses": 16,

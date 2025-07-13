@@ -5,13 +5,13 @@
     "villager_profession": "minecraft:librarian"
   },
   "first_buy": {
-    "id": "minecraft:lantern"
+    "id": "minecraft:emerald"
   },
   "max_uses": 12,
-  "merchant_experience": 10,
+  "merchant_experience": 5,
   "price_multiplier": 0.05,
   "rewarding_player_experience": true,
   "sell": {
-    "id": "minecraft:emerald"
+    "id": "minecraft:lantern"
   }
 }

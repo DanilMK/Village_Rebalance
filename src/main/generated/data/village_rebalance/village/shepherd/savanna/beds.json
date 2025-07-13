@@ -15,13 +15,79 @@
   "rewarding_player_experience": true,
   "sell": [
     {
-      "id": "minecraft:red_bed"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:red_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:red_wool",
+            "search_type": "sell"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:red_carpet",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "id": "minecraft:red_bed"
+      }
     },
     {
-      "id": "minecraft:orange_bed"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:orange_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:orange_wool",
+            "search_type": "sell"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:orange_carpet",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "id": "minecraft:orange_bed"
+      }
     },
     {
-      "id": "minecraft:brown_bed"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:brown_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:brown_wool",
+            "search_type": "sell"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:brown_carpet",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "id": "minecraft:brown_bed"
+      }
     }
   ]
 }

@@ -15,13 +15,79 @@
   "rewarding_player_experience": true,
   "sell": [
     {
-      "id": "minecraft:light_blue_bed"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_blue_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_blue_wool",
+            "search_type": "sell"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_blue_carpet",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "id": "minecraft:light_blue_bed"
+      }
     },
     {
-      "id": "minecraft:light_gray_bed"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_gray_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_gray_wool",
+            "search_type": "sell"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_gray_carpet",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "id": "minecraft:light_gray_bed"
+      }
     },
     {
-      "id": "minecraft:green_bed"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:green_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:green_wool",
+            "search_type": "sell"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:green_carpet",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "id": "minecraft:green_bed"
+      }
     }
   ]
 }

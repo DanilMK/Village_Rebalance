@@ -46,16 +46,7 @@ public class CartographerVillager extends VillagerTradeOffers {
 
         buyForEmerald("ink_sac", 4, 12, item(Items.INK_SAC, 5));
 
-
-        sellDistributeForBiomes("banners", 4, 3, 1, 12, BANNERS, Map.of(
-                VillagerType.DESERT, new int[] {CYAN, GREEN, LIME},
-                VillagerType.PLAINS, new int[] {WHITE, YELLOW, GREEN},
-                VillagerType.SAVANNA, new int[] {RED, ORANGE, BROWN},
-                VillagerType.SNOW, new int[] {WHITE, BLUE, BLACK},
-                VillagerType.TAIGA, new int[] {PURPLE, BLUE, GRAY},
-                VillagerType.SWAMP, new int[] {LIGHT_GRAY, MAGENTA, PINK},
-                VillagerType.JUNGLE, new int[] {LIGHT_BLUE, LIGHT_GRAY, GREEN}
-        ));
+        sellDistributeForBiomes("banners", 4, 3, 1, 12, BANNERS, colorsDistribute);
 
         buyForEmerald("glow_ink_sac", 5, 12, 2, item(Items.GLOW_INK_SAC, 5));
 

@@ -15,16 +15,67 @@
   "rewarding_player_experience": true,
   "sell": [
     {
-      "count": 3,
-      "id": "minecraft:light_gray_carpet"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_gray_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:light_gray_wool",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "count": 3,
+        "id": "minecraft:light_gray_carpet"
+      }
     },
     {
-      "count": 3,
-      "id": "minecraft:magenta_carpet"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:magenta_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:magenta_wool",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "count": 3,
+        "id": "minecraft:magenta_carpet"
+      }
     },
     {
-      "count": 3,
-      "id": "minecraft:pink_carpet"
+      "condition": {
+        "condition_type": "village_rebalance:or",
+        "conditions": [
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:pink_dye",
+            "search_type": "buy"
+          },
+          {
+            "condition_type": "village_rebalance:offers_contains_item",
+            "item": "minecraft:pink_wool",
+            "search_type": "sell"
+          }
+        ]
+      },
+      "item": {
+        "count": 3,
+        "id": "minecraft:pink_carpet"
+      }
     }
   ]
 }

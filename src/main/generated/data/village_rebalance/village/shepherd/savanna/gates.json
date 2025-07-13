@@ -7,12 +7,26 @@
   },
   "first_buy": [
     {
-      "count": 8,
-      "id": "minecraft:acacia_fence_gate"
+      "condition": {
+        "condition_type": "village_rebalance:offers_contains_item",
+        "item": "minecraft:acacia_fence",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 8,
+        "id": "minecraft:acacia_fence_gate"
+      }
     },
     {
-      "count": 8,
-      "id": "minecraft:cherry_fence_gate"
+      "condition": {
+        "condition_type": "village_rebalance:offers_contains_item",
+        "item": "minecraft:cherry_fence",
+        "search_type": "buy"
+      },
+      "item": {
+        "count": 8,
+        "id": "minecraft:cherry_fence_gate"
+      }
     }
   ],
   "max_uses": 16,

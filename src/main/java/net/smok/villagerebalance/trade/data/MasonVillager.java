@@ -2,6 +2,7 @@ package net.smok.villagerebalance.trade.data;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.util.Pair;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.smok.villagerebalance.trade.ItemContainer;
@@ -9,6 +10,7 @@ import net.smok.villagerebalance.trade.conditions.OfferCondition;
 import net.smok.villagerebalance.trade.fields.FieldVillagerData;
 import net.smok.villagerebalance.trade.conditions.Conditions;
 
+import java.util.List;
 import java.util.Map;
 
 public class MasonVillager extends VillagerTradeOffers {
@@ -35,23 +37,23 @@ public class MasonVillager extends VillagerTradeOffers {
                 item(Items.POLISHED_ANDESITE, 4, Items.POLISHED_DIORITE, 4, Items.POLISHED_GRANITE, 4));
 
         buyForEmerald("any_stones", 2, 16,
-                ItemContainer.of(new ItemStack(Items.SANDSTONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.DESERT))),
-                ItemContainer.of(new ItemStack(Items.MOSSY_COBBLESTONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
-                ItemContainer.of(new ItemStack(Items.STONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.PLAINS))),
-                ItemContainer.of(new ItemStack(Items.RED_SANDSTONE, 20), Conditions.of(FieldVillagerData.of(VillagerType.SAVANNA))),
-                ItemContainer.of(new ItemStack(Items.DEEPSLATE, 20), Conditions.of(FieldVillagerData.of(VillagerType.SNOW))),
-                ItemContainer.of(new ItemStack(Items.MUD, 20), Conditions.of(FieldVillagerData.of(VillagerType.SWAMP))),
-                ItemContainer.of(new ItemStack(Items.TUFF, 20), Conditions.of(FieldVillagerData.of(VillagerType.TAIGA)))
+                item(Items.SANDSTONE, 20, Conditions.of(FieldVillagerData.of(VillagerType.DESERT))),
+                item(Items.MOSSY_COBBLESTONE, 20, Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
+                item(Items.STONE, 20, Conditions.of(FieldVillagerData.of(VillagerType.PLAINS))),
+                item(Items.RED_SANDSTONE, 20, Conditions.of(FieldVillagerData.of(VillagerType.SAVANNA))),
+                item(Items.DEEPSLATE, 20, Conditions.of(FieldVillagerData.of(VillagerType.SNOW))),
+                item(Items.MUD, 20, Conditions.of(FieldVillagerData.of(VillagerType.SWAMP))),
+                item(Items.TUFF, 20, Conditions.of(FieldVillagerData.of(VillagerType.TAIGA)))
         );
 
         sellForEmerald("any_bricks", 2, 16,
-                ItemContainer.of(new ItemStack(Items.CUT_SANDSTONE, 4), Conditions.of(FieldVillagerData.of(VillagerType.DESERT))),
-                ItemContainer.of(new ItemStack(Items.MOSSY_STONE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
-                ItemContainer.of(new ItemStack(Items.STONE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.PLAINS))),
-                ItemContainer.of(new ItemStack(Items.CUT_RED_SANDSTONE, 4), Conditions.of(FieldVillagerData.of(VillagerType.SAVANNA))),
-                ItemContainer.of(new ItemStack(Items.DEEPSLATE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.SNOW))),
-                ItemContainer.of(new ItemStack(Items.MUD_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.SWAMP))),
-                ItemContainer.of(new ItemStack(Items.STONE_BRICKS, 4), Conditions.of(FieldVillagerData.of(VillagerType.TAIGA)))
+                item(Items.CUT_SANDSTONE, 4, Conditions.of(FieldVillagerData.of(VillagerType.DESERT))),
+                item(Items.MOSSY_STONE_BRICKS, 4, Conditions.of(FieldVillagerData.of(VillagerType.JUNGLE))),
+                item(Items.STONE_BRICKS, 4, Conditions.of(FieldVillagerData.of(VillagerType.PLAINS))),
+                item(Items.CUT_RED_SANDSTONE, 4, Conditions.of(FieldVillagerData.of(VillagerType.SAVANNA))),
+                item(Items.DEEPSLATE_BRICKS, 4, Conditions.of(FieldVillagerData.of(VillagerType.SNOW))),
+                item(Items.MUD_BRICKS, 4, Conditions.of(FieldVillagerData.of(VillagerType.SWAMP))),
+                item(Items.STONE_BRICKS, 4, Conditions.of(FieldVillagerData.of(VillagerType.TAIGA)))
         );
 
         buyForEmerald("dripstone", 3, 16,
@@ -60,36 +62,26 @@ public class MasonVillager extends VillagerTradeOffers {
         sellForEmerald("dripstone_block", 3, 16,
                 item(Items.DRIPSTONE_BLOCK, 4));
 
-        buyDistributeForBiomes("dyes", 3, 1, 12, 16, DYES, TERRACOTTA, OfferCondition.SearchType.SELL, Map.of(
-                VillagerType.DESERT, new int[] {ORANGE, BLUE},
-                VillagerType.JUNGLE, new int[] {LIME, GREEN, CYAN, LIGHT_BLUE},
-                VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
-                VillagerType.SAVANNA, new int[] {RED, YELLOW, MAGENTA},
-                VillagerType.SNOW, new int[] {WHITE, LIGHT_GRAY, GRAY, CYAN},
-                VillagerType.SWAMP, new int[] {GRAY, BLUE, LIGHT_BLUE},
-                VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
-        ));
+        Map<VillagerType, int[]> biomeDistribution = Map.of(
+                VillagerType.DESERT, new int[]{ORANGE, BLUE},
+                VillagerType.JUNGLE, new int[]{LIME, GREEN, CYAN, LIGHT_BLUE},
+                VillagerType.PLAINS, new int[]{LIME, GREEN, PINK},
+                VillagerType.SAVANNA, new int[]{RED, YELLOW, MAGENTA},
+                VillagerType.SNOW, new int[]{WHITE, LIGHT_GRAY, GRAY, CYAN},
+                VillagerType.SWAMP, new int[]{GRAY, BLUE, LIGHT_BLUE},
+                VillagerType.TAIGA, new int[]{BLACK, BROWN, LIGHT_BLUE, PURPLE}
+        );
+        
+        buyDistributeForBiomes("dyes", 3, 1, 12, 16, DYES, 
+                List.of(new Pair<>(OfferCondition.SearchType.SELL, TERRACOTTA)), biomeDistribution);
 
-        sellDistributeForBiomes("terracotta", 3, 1, 12, 16, TERRACOTTA, DYES, OfferCondition.SearchType.BUY, Map.of(
-                VillagerType.DESERT, new int[] {ORANGE, BLUE},
-                VillagerType.JUNGLE, new int[] {LIME, GREEN, CYAN, LIGHT_BLUE},
-                VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
-                VillagerType.SAVANNA, new int[] {RED, YELLOW, MAGENTA},
-                VillagerType.SNOW, new int[] {WHITE, LIGHT_GRAY, GRAY, CYAN},
-                VillagerType.SWAMP, new int[] {GRAY, BLUE, LIGHT_BLUE},
-                VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
-        ));
+        sellDistributeForBiomes("terracotta", 3, 1, 12, 16, TERRACOTTA, 
+                List.of(new Pair<>(OfferCondition.SearchType.BUY, DYES)), biomeDistribution);
 
-        sellDistributeForBiomes("glazed_terracotta", 4, 1, 12, 16, GLAZED_TERRACOTTA, DYES, OfferCondition.SearchType.BUY, Map.of(
-                VillagerType.DESERT, new int[] {ORANGE, BLUE},
-                VillagerType.JUNGLE, new int[] {LIME, GREEN, CYAN, LIGHT_BLUE},
-                VillagerType.PLAINS, new int[] {LIME, GREEN, PINK},
-                VillagerType.SAVANNA, new int[] {RED, YELLOW, MAGENTA},
-                VillagerType.SNOW, new int[] {WHITE, LIGHT_GRAY, GRAY, CYAN},
-                VillagerType.SWAMP, new int[] {GRAY, BLUE, LIGHT_BLUE},
-                VillagerType.TAIGA, new int[] {BLACK, BROWN, LIGHT_BLUE, PURPLE}
-        ));
-
+        sellDistributeForBiomes("glazed_terracotta", 4, 1, 12, 16, GLAZED_TERRACOTTA,
+                List.of(new Pair<>(OfferCondition.SearchType.SELL, TERRACOTTA), new Pair<>(OfferCondition.SearchType.BUY, DYES)), biomeDistribution);
+        
+        
         buyForEmerald("nether_quartz",
                 5, 16, item(Items.QUARTZ, 12));
 

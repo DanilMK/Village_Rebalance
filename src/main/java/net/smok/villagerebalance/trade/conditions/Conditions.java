@@ -210,6 +210,12 @@ public final class Conditions {
         return new Condition.Data<>(condition, data);
     }
 
+
+    @Contract("_, _, _ -> new")
+    public static <T> Condition.@NotNull Data<OfferCondition.Searchable<T>> of(OfferCondition<T> condition, OfferCondition.SearchType searchType, T data) {
+        return new Condition.Data<>(condition, new OfferCondition.Searchable<>(searchType, data));
+    }
+
     public static Condition.Data<FieldVillagerData> of(FieldVillagerData data) {
         return of(VILLAGER_DATA, data);
     }
